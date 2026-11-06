@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Makabi — Real Estate Entrepreneur & AI Builder</title>
+<meta name="description" content="Michael Makabi: 20+ year commercial real estate veteran and AI builder. Founder of MTIP, 1PropertyMarket and Loren AI. Make The Impossible Possible.">
+<style>
+@font-face{font-family:'Archivo';src:url('fonts/archivo-900.ttf') format('truetype');font-weight:900;font-display:swap}
+@font-face{font-family:'Archivo';src:url('fonts/archivo-700.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Archivo';src:url('fonts/archivo-500.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('fonts/spacemono-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('fonts/spacemono-700.ttf') format('truetype');font-weight:700;font-display:swap}
+:root{
+  --paper:#f4f1ea; --ink:#0b0b0d; --black:#060607;
+  --red:#c8102e; --navy:#16294f; --gold:#a8842c; --steel:#9fb4d8;
+  --grey:#57544d; --grey-l:#a49d8d; --line:#cfc9ba; --line-d:#2a2a2e;
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+img{user-select:none;-webkit-user-drag:none}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.13em;font-size:11px;line-height:1.75}
+.binary{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.32em;opacity:.55;pointer-events:none;white-space:nowrap;z-index:1}
+.b-red{color:#cf7280}.b-navy{color:#7d90b8}.b-gold{color:#bfa05e}.b-mint{color:#8fb8a4}.b-grey{color:#43434a}
+
+/* ================= HERO ================= */
+#heroScroll{height:360vh;position:relative}
+#heroStage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--paper)}
+#gridShade{position:absolute;inset:0;background:#050506;opacity:0;z-index:2;
+  background-image:linear-gradient(rgba(140,160,200,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(140,160,200,.07) 1px,transparent 1px);
+  background-size:72px 72px;background-position:center}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:0;z-index:2;pointer-events:none}
+#blob1{width:44vw;height:44vw;left:-8vw;top:16%;background:rgba(200,16,46,.34)}
+#blob2{width:38vw;height:38vw;right:-6vw;top:38%;background:rgba(22,41,79,.55)}
+#blob3{width:26vw;height:26vw;left:34%;bottom:-10%;background:rgba(168,132,44,.30)}
+#bigGhost{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);z-index:1;font-weight:900;text-transform:uppercase;
+  font-size:clamp(120px,24vw,380px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(11,11,13,.13);white-space:nowrap;pointer-events:none}
+#portraitWrap{position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);height:96%;z-index:3;will-change:transform,opacity}
+#portrait{height:100%;width:auto;display:block;filter:drop-shadow(0 30px 50px rgba(20,18,10,.22))}
+#machineCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
+#lensCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.hero-corner{position:absolute;z-index:6}
+#heroName{top:24px;left:28px;font-weight:900;text-transform:uppercase;font-size:clamp(32px,4.4vw,60px);line-height:.93;letter-spacing:-.015em}
+#heroName .dot{color:var(--red)}
+#heroName .sub{display:block;margin-top:10px;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.22em;color:var(--grey)}
+#heroNav{top:28px;right:28px;text-align:right;font-weight:700;text-transform:uppercase;font-size:clamp(17px,2vw,28px);line-height:1.3}
+#heroNav a{display:block;transition:color .2s,transform .2s}
+#heroNav a:hover{color:var(--red);transform:translateX(-6px)}
+#hudBL{left:28px;bottom:26px;z-index:6}
+#hudBR{right:28px;bottom:26px;text-align:right;z-index:6}
+#heroState{color:var(--red);font-weight:700}
+#heroTag{position:absolute;left:28px;top:37%;z-index:6;max-width:290px}
+#heroTag h2{font-size:clamp(19px,1.7vw,25px);font-weight:900;text-transform:uppercase;line-height:1.18}
+#heroTag h2 em{font-style:normal;color:var(--red)}
+#heroTag p{margin-top:10px;font-size:14.5px;font-weight:500;line-height:1.55;color:var(--grey)}
+#heroStats{position:absolute;right:28px;top:38%;z-index:6;text-align:right}
+#heroStats .stat{margin-bottom:18px}
+#heroStats .num{font-size:clamp(26px,2.6vw,40px);font-weight:900;line-height:1}
+#heroStats .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);margin-top:5px}
+#morphLine{position:absolute;left:0;right:0;top:40%;z-index:6;text-align:center;pointer-events:none;opacity:0}
+#morphLine .ml{display:block;overflow:hidden}
+#morphLine .ml span{display:block;font-weight:900;text-transform:uppercase;font-size:clamp(36px,7.4vw,108px);line-height:1;color:#f2efe7;transform:translateY(110%)}
+#morphLine .ml.alt span{color:transparent;-webkit-text-stroke:2px var(--red)}
+#scrollHint{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:6;text-align:center}
+#scrollHint .wire{width:1px;height:44px;background:var(--ink);margin:8px auto 0;transform-origin:top;animation:wire 2.2s ease-in-out infinite}
+@keyframes wire{0%,100%{transform:scaleY(.35);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.intro{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.19,1,.22,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:860px){
+  #heroTag{display:block;top:19.5%;left:16px;max-width:185px}
+  #heroTag p{display:none}
+  #heroStats{top:auto;bottom:104px;right:18px;color:#f2efe7}
+  #heroStats .lbl{color:rgba(242,239,231,.72)}
+  #heroStats .stat{margin-bottom:10px}
+  #hudBL{left:16px;bottom:16px}#hudBR{display:none}
+  #heroName{left:16px;top:14px}#heroNav{right:16px;top:16px}
+  #portraitWrap{height:80%}
+  #scrollHint{display:none}
+  #bigGhost{font-size:44vw;top:38%}
+}
+
+/* sticky call bar */
+#ctaBar{position:fixed;left:50%;bottom:18px;transform:translate(-50%,160%);z-index:60;display:flex;gap:8px;transition:transform .5s cubic-bezier(.19,1,.22,1)}
+#ctaBar.show{transform:translate(-50%,0)}
+#ctaBar a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:13px 19px;border-radius:999px;white-space:nowrap}
+#ctaBar .primary{background:var(--red);color:#fff}
+#ctaBar .ghost{background:rgba(8,8,10,.88);color:#fff}
+
+/* ================= JOURNEY ================= */
+#journeyScroll{height:480vh;position:relative;background:var(--black)}
+#journeyStage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--black);color:#f2efe7}
+#journeyStage .gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(140,160,200,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,160,200,.05) 1px,transparent 1px);background-size:72px 72px}
+#journeyKicker{position:absolute;left:28px;top:30px;z-index:3;color:var(--grey-l)}
+#journeyTitle{position:absolute;left:28px;bottom:20vh;font-weight:900;text-transform:uppercase;font-size:clamp(54px,10.5vw,158px);line-height:.9;z-index:1;pointer-events:none}
+#journeyTitle .out{color:transparent;-webkit-text-stroke:2px #f2efe7}
+#jTrack{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:3.4vw;padding:0 7vw;z-index:2;will-change:transform}
+.jcard{flex:0 0 auto;width:min(360px,78vw);background:#0e0e11;border:1px solid var(--line-d);will-change:transform,opacity}
+.jcard .ph{height:215px;overflow:hidden}
+.jcard .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.12);transition:transform 1.2s cubic-bezier(.19,1,.22,1)}
+.jcard.on .ph img{transform:scale(1)}
+.jcard .tx{padding:18px 20px 22px}
+.jcard .handle{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-l)}
+.jcard .year{color:var(--red);font-weight:900;font-size:32px;line-height:1;margin:8px 0 3px}
+.jcard .plat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-l)}
+.jcard h3{font-size:24px;font-weight:900;text-transform:uppercase;line-height:1.08;margin:11px 0 9px}
+.jcard p{font-size:15px;font-weight:500;line-height:1.55;color:#c9c5ba}
+#jAxis{position:absolute;left:28px;right:28px;bottom:6vh;z-index:3}
+#jAxis .rail{border-top:2px dashed #45454c;position:relative}
+#jAxis .fill{position:absolute;left:0;top:-2px;border-top:2px solid var(--red);width:0%}
+#jAxis .nodes{display:flex;justify-content:space-between;margin-top:11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey-l)}
+#jAxis .nodes b{color:#f2efe7}
+#jMarker{position:absolute;left:28px;bottom:12vh;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey-l);z-index:3}
+#jMarker b{color:var(--red)}
+@media(max-width:860px){#journeyTitle{bottom:auto;top:11vh}#jAxis .nodes span:nth-child(even){display:none}.jcard .ph{height:180px}}
+
+/* ================= SECTIONS ================= */
+section.block{padding:120px 28px 100px;position:relative}
+.wrap{max-width:1560px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.dark .kicker{color:var(--grey-l)}
+h2.giant{font-weight:900;text-transform:uppercase;font-size:clamp(44px,7.4vw,112px);line-height:.94;letter-spacing:-.015em}
+h2.giant em{font-style:normal;color:var(--red)}
+h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
+.dark{background:var(--black);color:#f2efe7}
+.wave{display:block;width:100%;height:64px;margin-bottom:-1px}
+.rows{margin-top:60px;border-top:1px solid var(--line)}
+.dark .rows{border-top-color:#3a3a40}
+.row{display:flex;align-items:center;gap:28px;padding:32px 8px;border-bottom:1px solid var(--line);position:relative}
+.dark .row{border-bottom-color:var(--line-d)}
+.row .rname{font-size:clamp(29px,3.7vw,54px);font-weight:900;text-transform:uppercase;line-height:1;flex:1 1 auto;transition:transform .45s cubic-bezier(.19,1,.22,1),color .25s}
+.row:hover .rname{color:var(--red);transform:translateX(14px)}
+.row .rmeta{flex:0 0 31%;font-size:16px;font-weight:500;line-height:1.55;color:var(--grey)}
+.dark .row .rmeta{color:#c9c5ba}
+.row .rmeta .handle{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:var(--grey-l)}
+.row .rarrow{font-size:26px;font-weight:500;opacity:0;transform:translateX(-10px) rotate(-45deg);transition:.35s}
+.row:hover .rarrow{opacity:1;transform:rotate(-45deg)}
+.row .rnum{font-family:var(--mono);font-size:13px;color:var(--red);flex:0 0 auto}
+#rowPreview{position:fixed;width:272px;height:182px;z-index:40;pointer-events:none;overflow:hidden;opacity:0;transform:scale(.85) rotate(-3deg);transition:opacity .3s,transform .45s cubic-bezier(.19,1,.22,1)}
+#rowPreview.show{opacity:1;transform:scale(1) rotate(-3deg)}
+#rowPreview img{width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){.row{flex-wrap:wrap;gap:8px;padding:26px 2px}.row .rmeta{flex:1 1 100%}.row .rarrow{display:none}#rowPreview{display:none}}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;margin-top:64px}
+.marquee .track{display:flex;gap:60px;width:max-content;animation:mq 32s linear infinite;font-weight:900;text-transform:uppercase;font-size:27px;white-space:nowrap}
+.marquee .track i{font-style:normal;color:var(--red)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
+.principle{border:1px solid var(--line);padding:28px;background:#faf8f2;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s}
+.principle:hover{transform:translateY(-6px);box-shadow:0 24px 44px rgba(20,18,10,.10)}
+.principle .pn{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.14em}
+.principle h3{font-size:22px;font-weight:900;text-transform:uppercase;margin:13px 0 9px;line-height:1.15}
+.principle p{font-size:15.5px;font-weight:500;line-height:1.55;color:var(--grey)}
+@media(max-width:860px){.principles{grid-template-columns:1fr}}
+.contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:60px}
+@media(max-width:860px){.contactGrid{grid-template-columns:1fr}}
+.bigmail{font-size:clamp(24px,3vw,40px);font-weight:900;word-break:break-all;line-height:1.16}
+.pillbtn{display:inline-block;margin-top:20px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:14px 23px;border-radius:999px;border:0;cursor:pointer;transition:background .25s}
+.pillbtn:hover{background:var(--red)}
+.nlform{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.nlform input{flex:1 1 240px;padding:16px;border:1px solid var(--grey-l);background:#fff;font-size:16px;font-family:var(--sans)}
+.nlform button{background:var(--ink);color:#fff;border:0;padding:16px 27px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.nlform button:hover{background:var(--red)}
+.fineprint{font-size:12.5px;font-weight:500;color:var(--grey);margin-top:13px;line-height:1.55}
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s cubic-bezier(.19,1,.22,1),transform .9s cubic-bezier(.19,1,.22,1)}
+.reveal.in{opacity:1;transform:none}
+footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hidden}
+.foot{max-width:1560px;margin:0 auto}
+.footTop{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.foot .fname{font-weight:900;text-transform:uppercase;font-size:21px}
+.foot nav{display:flex;gap:26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;flex-wrap:wrap}
+.foot nav a:hover{color:var(--red)}
+#footGiant{font-weight:900;text-transform:uppercase;font-size:clamp(70px,15.5vw,248px);line-height:.86;text-align:center;margin-top:56px;color:transparent;-webkit-text-stroke:2px #3d3d44;transition:color 1.2s}
+#footGiant:hover{color:#f2efe7;-webkit-text-stroke:2px #f2efe7}
+.foot .fnote{margin-top:34px;font-size:12.5px;font-weight:500;color:var(--grey-l);line-height:1.65;max-width:760px}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#scrollHint .wire{animation:none}html{scroll-behavior:auto}.intro{animation:none;opacity:1;transform:none}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div id="heroScroll">
+  <div id="heroStage">
+    <span class="binary b-navy" data-depth="14" style="top:15%;left:3.5%">10110 0110 1101 0010</span>
+    <span class="binary b-red" data-depth="30" style="top:63%;left:1.5%">0110 1101 0101</span>
+    <span class="binary b-gold" data-depth="22" style="top:20%;right:4%">1101 0010 1011 0110</span>
+    <span class="binary b-mint" data-depth="10" style="top:79%;right:6%">0101 1010 0110</span>
+    <span class="binary b-navy" data-depth="38" style="top:44%;left:9%">0010 1011</span>
+    <div id="bigGhost" aria-hidden="true">Makabi</div>
+    <div id="gridShade"></div>
+    <div class="blob" id="blob1"></div><div class="blob" id="blob2"></div><div class="blob" id="blob3"></div>
+    <div id="portraitWrap" class="intro" style="animation-delay:.15s">
+      <img id="portrait" src="michael-cutout.png" alt="Studio portrait of Michael Makabi wearing a navy blazer and a white MTIP cap" fetchpriority="high">
+    </div>
+    <canvas id="machineCanvas" aria-hidden="true"></canvas>
+    <canvas id="lensCanvas" role="img" aria-label="Interactive portrait of Michael Makabi. A tracking lens reveals the machine view of his face. Scrolling dissolves the portrait into a machine rendering."></canvas>
+
+    <div class="hero-corner intro" id="heroName" style="animation-delay:.3s">Michael<br>Makabi<span class="dot">.</span><span class="sub">Est. 2004 · Los Angeles → Miami</span></div>
+    <nav class="hero-corner intro" id="heroNav" style="animation-delay:.45s" aria-label="Sections">
+      <a href="#journeyScroll">Story</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#work">Work With Me</a>
+    </nav>
+    <div id="heroTag" class="intro" style="animation-delay:.6s">
+      <h2>Real estate<br>entrepreneur.<br><em>AI builder.</em></h2>
+      <p>Twenty years of commercial real estate, now building the AI that does the work. Founder of MTIP, 1PropertyMarket and Loren AI.</p>
+    </div>
+    <div id="heroStats" class="intro" style="animation-delay:.7s">
+      <div class="stat"><div class="num">20+</div><div class="lbl">Years in the game</div></div>
+      <div class="stat"><div class="num">10+</div><div class="lbl">Companies built</div></div>
+      <div class="stat"><div class="num">$1B+</div><div class="lbl">Career transactions</div></div>
+    </div>
+    <div id="morphLine" aria-hidden="true">
+      <span class="ml"><span>Part operator.</span></span>
+      <span class="ml alt"><span>Part machine.</span></span>
+    </div>
+    <div class="hero-corner mono intro" id="hudBL" style="animation-delay:.8s">
+      Feature mesh · <span id="ptCount">478</span> pts<br>
+      Yaw <span id="yaw">0.0°</span> · Pitch <span id="pitch">0.0°</span> · <span id="heroState">Tracking</span>
+    </div>
+    <div class="hero-corner mono intro" id="hudBR" style="animation-delay:.8s">Move to reveal<br>Scroll to go deeper</div>
+    <div id="scrollHint" class="mono intro" style="animation-delay:1s">Scroll<div class="wire"></div></div>
+  </div>
+</div>
+
+<div id="ctaBar"><a class="primary" href="#work">Work with me</a><a class="ghost" href="#newsletter">Join the newsletter</a></div>
+<div id="rowPreview"><img src="img/eco-1pm.jpg" alt=""></div>
+
+<!-- ================= JOURNEY ================= -->
+<div id="journeyScroll">
+  <div id="journeyStage">
+    <div class="gridbg"></div>
+    <span class="binary b-grey" style="top:11%;right:5%">1101 0110 1010 0101 1100</span>
+    <div class="mono" id="journeyKicker">The Story · Scroll</div>
+    <div id="journeyTitle">The<br><span class="out">Journey</span>.</div>
+    <div id="jTrack">
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2004.jpg" alt="Downtown Los Angeles skyline in daylight"></div>
+        <div class="tx"><div class="handle">Downtown Los Angeles</div><div class="year">2004</div><div class="plat">Where it started</div>
+        <h3>The Broker</h3><p>Started as a commercial realtor in Downtown LA and became one of the early pioneers of commercial wholesaling in that market. Licensed broker, general contractor, USC MBA.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2014.jpg" alt="A grand estate house at dusk with lights on"></div>
+        <div class="tx"><div class="handle">BroadBridge Fund</div><div class="year">2014</div><div class="plat">Capital</div>
+        <h3>The Syndicator</h3><p>Founded BroadBridge to buy and syndicate real assets at scale, including the landmark Broadway Trade Center in DTLA, over a million square feet of downtown history.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2018.jpg" alt="Multifamily apartment buildings at dusk"></div>
+        <div class="tx"><div class="handle">Make The Impossible Possible</div><div class="year">2018</div><div class="plat">Brokerage</div>
+        <h3>The System</h3><p>Built MTIP Commercial Real Estate, a deal-sourcing brokerage specialising in off-market acquisitions, dispositions and syndication, and the Collective that grew around it.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2023.jpg" alt="Michael Makabi portrait, head and shoulders"></div>
+        <div class="tx"><div class="handle">My Real Estate Bible</div><div class="year">2023</div><div class="plat">The Book</div>
+        <h3>The Teacher</h3><p>Published My Real Estate Bible with Oran Aviv, 600+ pages of field-tested CRE practice, and MTIP University, the same training his own brokerage reps receive.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2024.jpg" alt="Loren, the Loren AI voice agent"></div>
+        <div class="tx"><div class="handle">Founded with Loren</div><div class="year">2024</div><div class="plat">AI Voice</div>
+        <h3>The Machine</h3><p>Launched Loren AI with his wife Loren: AI voice agents that answer every call, qualify, book and follow up for real businesses, around the clock, in dozens of languages.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2025.jpg" alt="Aerial view of suburban rooftops"></div>
+        <div class="tx"><div class="handle">1PropertyMarket</div><div class="year">2025</div><div class="plat">Agentic AI</div>
+        <h3>The Platform</h3><p>1PropertyMarket became the agentic layer for real estate: your own AI connects, finds off-market deals, builds reports, makes the calls and follows up.</p></div>
+      </article>
+      <article class="jcard">
+        <div class="ph"><img src="img/t-2026.jpg" alt="Miami skyline and bay in daylight"></div>
+        <div class="tx"><div class="handle">MTIP Collective · North Miami Beach</div><div class="year">2026</div><div class="plat">Today</div>
+        <h3>The Ecosystem</h3><p>One ecosystem, run from Miami: brokerage, capital, education, community workspace and AI, each company feeding the next. The work now is focus, family and legacy.</p></div>
+      </article>
+    </div>
+    <div id="jMarker">One deal at a time &nbsp;→&nbsp; <b>an ecosystem that compounds</b></div>
+    <div id="jAxis"><div class="rail"><div class="fill" id="jFill"></div></div>
+      <div class="nodes"><span><b>2004</b> Broker</span><span><b>2014</b> Syndicator</span><span><b>2018</b> MTIP</span><span><b>2023</b> Author</span><span><b>2024</b> Loren AI</span><span><b>2025</b> 1PM</span><span><b>2026</b> Ecosystem</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ECOSYSTEM ================= -->
+<section class="block dark" id="ecosystem">
+  <div class="wrap">
+    <div class="kicker reveal">The Ecosystem</div>
+    <h2 class="giant reveal">Where the<br>work <em>lives.</em></h2>
+    <div class="rows reveal">
+      <a class="row" href="https://1propertymarket.com" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
+        <div class="rname">1PropertyMarket</div>
+        <div class="rmeta"><span class="handle">1pm.ai · Agentic AI for real estate</span>The platform your own AI connects to: off-market deal flow, reports, calls and follow-up, done by agents.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener" data-img="img/t-2024.jpg">
+        <div class="rname">Loren AI</div>
+        <div class="rmeta"><span class="handle">ai-loren.com · AI voice agency</span>24/7 AI receptionists and automation for service businesses, co-founded with Loren. It never sleeps, and neither does your front desk.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener" data-img="img/t-2018.jpg">
+        <div class="rname">MTIP Commercial</div>
+        <div class="rmeta"><span class="handle">mtip-re.com · Brokerage</span>Make The Impossible Possible. Off-market acquisitions, dispositions and syndication, powered by Loren AI.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener" data-img="img/t-2026.jpg">
+        <div class="rname">MTIP Collective</div>
+        <div class="rmeta"><span class="handle">North Miami Beach · Community</span>Workspace, AI technology, community and education on Biscayne Boulevard, and the JV partner network behind the deal flow.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://mtipu.com" target="_blank" rel="noopener" data-img="img/t-2023.jpg">
+        <div class="rname">MTIP University</div>
+        <div class="rmeta"><span class="handle">mtipu.com · Education</span>40+ classes in wholesaling, underwriting and syndication. The same training MTIP reps get, open to anyone willing to work.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://myrealestatebible.com" target="_blank" rel="noopener" data-img="img/t-2014.jpg">
+        <div class="rname">My Real Estate Bible</div>
+        <div class="rmeta"><span class="handle">The Book · 600+ pages</span>Two decades of commercial real estate practice, written down: sourcing, underwriting, capital, debt and syndication.</div>
+        <div class="rarrow">→</div>
+      </a>
+      <a class="row" href="https://1broadbridge.com" target="_blank" rel="noopener" data-img="img/eco-broad.jpg">
+        <div class="rname">BroadBridge / BRiX</div>
+        <div class="rmeta"><span class="handle">Capital · Syndication</span>The acquisition and syndication engine that gets first look at the strongest deals the ecosystem surfaces.</div>
+        <div class="rarrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1440,0 L1440,20 C1080,62 720,62 360,28 C200,13 80,22 0,36 Z" fill="#060607"/></svg>
+
+<!-- ================= WORK WITH ME ================= -->
+<section class="block" id="work" style="padding-top:26px">
+  <span class="binary b-navy" data-depth="18" style="top:6%;right:4%">0110 1101 0101 1010</span>
+  <div class="wrap">
+    <div class="kicker reveal">Work With Me</div>
+    <h2 class="giant reveal">Three<br>ways <em>in.</em></h2>
+    <div class="rows reveal">
+      <a class="row" href="#newsletter"><div class="rnum">01</div><div class="rname">Partner On Deals</div>
+        <div class="rmeta">Bring a market, work the off-market flow with MTIP Collective, and split real deals with a team that has done it for twenty years.</div><div class="rarrow">→</div></a>
+      <a class="row" href="https://mtipu.com" target="_blank" rel="noopener"><div class="rnum">02</div><div class="rname">Learn The System</div>
+        <div class="rmeta">MTIP University and My Real Estate Bible: the full playbook, wholesaling to syndication, taught the way it is actually practised.</div><div class="rarrow">→</div></a>
+      <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener"><div class="rnum">03</div><div class="rname">Put AI To Work</div>
+        <div class="rmeta">Loren AI answers your phones and 1PropertyMarket puts your own AI agent to work on deals. Book a call and see it run live.</div><div class="rarrow">→</div></a>
+    </div>
+    <div class="marquee reveal" aria-hidden="true"><div class="track" id="mqTrack">
+      <span>MTIP</span><i>·</i><span>1PropertyMarket</span><i>·</i><span>Loren AI</span><i>·</i><span>BroadBridge</span><i>·</i><span>BRiX</span><i>·</i><span>MTIP University</span><i>·</i><span>MTIP Collective</span><i>·</i><span>My Real Estate Bible</span><i>·</i>
+    </div></div>
+    <div class="principles reveal">
+      <div class="principle"><div class="pn">Principle 01</div><h3>Make The Impossible Possible</h3><p>The name is the operating system. Every company in the ecosystem exists because a door that looked closed got opened.</p></div>
+      <div class="principle"><div class="pn">Principle 02</div><h3>Own The Asset, Automate The Work</h3><p>Buy real assets. Then build systems and AI that do the repetitive work, so time goes to family, faith and the next deal.</p></div>
+      <div class="principle"><div class="pn">Principle 03</div><h3>Family Is The Point</h3><p>Built with Loren, for the family. Freedom is the product; the businesses are how it gets funded.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="block" id="newsletter" style="padding-top:16px">
+  <div class="wrap">
+    <div class="contactGrid">
+      <div class="reveal"><div class="kicker">Get In Touch</div>
+        <div class="bigmail">mike@1propertymarket.com</div>
+        <button class="pillbtn" id="copyMail" type="button">Copy email</button>
+        <p class="fineprint" id="copyNote">For deals, partnerships, speaking and AI builds.</p></div>
+      <div class="reveal"><div class="kicker">Newsletter</div>
+        <div class="bigmail">Notes from the operator.</div>
+        <form class="nlform" id="nlForm"><input type="email" required placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form>
+        <p class="fineprint" id="nlNote">Join 10k+ founders and investors. Occasional, valuable, no noise. By entering your email you agree to be signed up to the list.</p></div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true" style="background:var(--paper)"><path d="M0,64 L0,28 C240,4 520,0 820,18 C1100,32 1300,46 1440,24 L1440,64 Z" fill="#060607"/></svg>
+<footer>
+  <div class="foot">
+    <div class="footTop">
+      <div class="fname">Michael Makabi</div>
+      <nav><a href="#journeyScroll">Story</a><a href="#ecosystem">Ecosystem</a><a href="#work">Work With Me</a>
+      <a href="https://www.instagram.com/michaelmakabi" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@MichaelMakabi" target="_blank" rel="noopener">YouTube</a></nav>
+    </div>
+    <div id="footGiant" aria-hidden="true">Makabi</div>
+    <p class="fnote">Make The Impossible Possible. This is a preview of the new MichaelMakabi.com, built alongside the current site, which stays live and untouched until you say go. Preview build: the newsletter and copy buttons are front-end only here.</p>
+  </div>
+</footer>
+
+<script>window.__MESH__={"crop_frac":[0,0,1,1],"vscale":1,"points":[[0.5041,0.2466,0.8174],[0.5091,0.224,0.9779],[0.5071,0.2296,0.8273],[0.5029,0.1995,0.9158],[0.5097,0.2169,1.0],[0.5098,0.2072,0.9808],[0.5094,0.1839,0.8403],[0.4583,0.1776,0.6434],[0.5094,0.1719,0.8111],[0.5099,0.1645,0.8258],[0.5115,0.1336,0.7594],[0.5039,0.2493,0.8072],[0.5037,0.2521,0.7869],[0.5035,0.2541,0.7551],[0.5036,0.254,0.7635],[0.5036,0.2573,0.7683],[0.5034,0.2613,0.7829],[0.5031,0.2656,0.7787],[0.5033,0.2717,0.7273],[0.5084,0.2272,0.9473],[0.499,0.2258,0.8712],[0.4254,0.1545,0.4106],[0.4779,0.1822,0.6819],[0.471,0.1828,0.6853],[0.4638,0.183,0.6767],[0.454,0.18,0.6385],[0.4838,0.181,0.6746],[0.4673,0.1682,0.721],[0.4752,0.1686,0.7116],[0.4601,0.1692,0.7097],[0.4552,0.1712,0.6881],[0.4462,0.1842,0.6141],[0.4709,0.2827,0.6695],[0.4553,0.1765,0.6299],[0.4199,0.1813,0.3773],[0.4364,0.1802,0.5663],[0.4692,0.2131,0.7295],[0.4948,0.2445,0.8186],[0.4955,0.2515,0.785],[0.4852,0.2466,0.7923],[0.4789,0.2493,0.7554],[0.4881,0.2515,0.7689],[0.4823,0.2522,0.7354],[0.4679,0.2575,0.6763],[0.502,0.2233,0.9765],[0.5017,0.2164,0.9975],[0.4439,0.167,0.6933],[0.4851,0.1965,0.7392],[0.4817,0.2182,0.8432],[0.4817,0.2142,0.8264],[0.4473,0.2111,0.6789],[0.5025,0.2074,0.9679],[0.4631,0.1619,0.7846],[0.4521,0.1634,0.7496],[0.4349,0.1445,0.5214],[0.4954,0.1683,0.8031],[0.482,0.1705,0.6864],[0.4625,0.2512,0.6657],[0.4181,0.2444,0.2047],[0.4868,0.2224,0.8138],[0.4932,0.2251,0.818],[0.4719,0.2541,0.6675],[0.4737,0.254,0.6801],[0.4478,0.1593,0.7227],[0.4809,0.2208,0.8096],[0.4775,0.1633,0.8013],[0.4764,0.1583,0.8158],[0.4686,0.1333,0.7178],[0.4412,0.1523,0.6361],[0.4731,0.1458,0.7717],[0.4387,0.1639,0.6466],[0.4319,0.1602,0.5337],[0.4949,0.2483,0.8086],[0.4867,0.2493,0.7829],[0.4805,0.2508,0.75],[0.4885,0.2237,0.8034],[0.4728,0.2541,0.6744],[0.4763,0.2552,0.7083],[0.4747,0.2539,0.6824],[0.4917,0.2214,0.8978],[0.4835,0.2531,0.722],[0.4892,0.253,0.741],[0.496,0.2534,0.7553],[0.4929,0.2706,0.7312],[0.4938,0.2646,0.7825],[0.4945,0.2603,0.7867],[0.4953,0.2563,0.7701],[0.4963,0.2533,0.7639],[0.4837,0.2532,0.7284],[0.4822,0.2547,0.7364],[0.4806,0.2566,0.7451],[0.4791,0.2589,0.737],[0.473,0.2395,0.745],[0.4136,0.2098,0.1362],[0.5078,0.2284,0.8692],[0.4793,0.2535,0.7032],[0.4779,0.2543,0.7081],[0.4962,0.2282,0.8183],[0.4834,0.225,0.7629],[0.4947,0.2267,0.8201],[0.4773,0.2,0.7228],[0.4653,0.2042,0.7155],[0.48,0.217,0.7927],[0.4488,0.1371,0.6317],[0.4545,0.1473,0.7111],[0.4605,0.157,0.7735],[0.4743,0.2624,0.7017],[0.4936,0.1608,0.8306],[0.4912,0.1464,0.7994],[0.4888,0.1323,0.7593],[0.4577,0.182,0.6578],[0.4369,0.1886,0.5848],[0.4874,0.1798,0.6649],[0.4466,0.1736,0.6482],[0.4908,0.1926,0.7602],[0.4874,0.2167,0.8993],[0.4272,0.1936,0.5273],[0.443,0.1931,0.6306],[0.4533,0.1956,0.6739],[0.4678,0.1946,0.6927],[0.4782,0.192,0.6973],[0.4857,0.1893,0.7095],[0.502,0.1849,0.8218],[0.4278,0.2077,0.5368],[0.4395,0.1729,0.6275],[0.5039,0.2267,0.9466],[0.4851,0.2035,0.7564],[0.4157,0.1804,0.1915],[0.4917,0.1866,0.7163],[0.4792,0.2171,0.7316],[0.4512,0.1768,0.6228],[0.4875,0.2119,0.8786],[0.4143,0.2264,0.1561],[0.4868,0.1776,0.6509],[0.495,0.209,0.9351],[0.4347,0.2633,0.4779],[0.4325,0.2719,0.3841],[0.4174,0.209,0.3353],[0.4267,0.2524,0.4168],[0.4258,0.1694,0.4399],[0.4669,0.2915,0.6351],[0.5041,0.2279,0.867],[0.4781,0.2081,0.7358],[0.4288,0.1811,0.512],[0.4656,0.1788,0.6696],[0.4716,0.1789,0.6791],[0.4748,0.2563,0.6996],[0.4275,0.2214,0.5095],[0.4815,0.3041,0.6144],[0.4543,0.2916,0.5187],[0.4435,0.2833,0.46],[0.5107,0.1481,0.7979],[0.5005,0.3064,0.6188],[0.4771,0.1785,0.6778],[0.4823,0.1779,0.667],[0.4854,0.1777,0.654],[0.433,0.1712,0.5733],[0.4806,0.1742,0.676],[0.4746,0.1731,0.6937],[0.4688,0.1731,0.6964],[0.4631,0.174,0.6877],[0.4594,0.1752,0.6706],[0.4195,0.1656,0.2893],[0.4615,0.1783,0.6565],[0.5065,0.2354,0.8114],[0.4807,0.2358,0.7723],[0.4871,0.2215,0.838],[0.4955,0.2349,0.8148],[0.5091,0.1773,0.8011],[0.4441,0.2741,0.5267],[0.4546,0.2831,0.5773],[0.4825,0.2973,0.6826],[0.4246,0.2597,0.2911],[0.4847,0.1762,0.6622],[0.4964,0.1954,0.8341],[0.5012,0.2997,0.6852],[0.4667,0.2989,0.5791],[0.418,0.2241,0.3354],[0.4895,0.253,0.7491],[0.488,0.2554,0.7575],[0.4867,0.2584,0.769],[0.4856,0.2621,0.7637],[0.4824,0.267,0.7261],[0.4776,0.253,0.7079],[0.4759,0.2524,0.7108],[0.4744,0.2517,0.7125],[0.4666,0.2448,0.7075],[0.4389,0.2255,0.6152],[0.4966,0.1883,0.7865],[0.4932,0.1748,0.688],[0.4881,0.1747,0.6716],[0.4792,0.2535,0.6993],[0.4336,0.2424,0.5237],[0.5,0.176,0.7634],[0.4766,0.2744,0.6946],[0.5096,0.199,0.9313],[0.5023,0.1924,0.8742],[0.5095,0.1914,0.8837],[0.4901,0.2058,0.8287],[0.5021,0.2906,0.7212],[0.5027,0.2802,0.7227],[0.4895,0.2788,0.719],[0.4583,0.2602,0.6454],[0.4728,0.2224,0.7236],[0.4664,0.2683,0.6683],[0.457,0.2206,0.7129],[0.4657,0.2293,0.7189],[0.4486,0.2316,0.6654],[0.4855,0.2884,0.7151],[0.4846,0.2089,0.7866],[0.4493,0.2656,0.5925],[0.4597,0.2749,0.6227],[0.4534,0.2511,0.6435],[0.4273,0.2333,0.4819],[0.4424,0.2512,0.5905],[0.4203,0.2385,0.3526],[0.4586,0.2385,0.6941],[0.4908,0.1993,0.7926],[0.4895,0.2201,0.9107],[0.4838,0.2207,0.847],[0.4941,0.2164,0.9543],[0.4881,0.1702,0.7131],[0.4764,0.1668,0.7392],[0.466,0.1659,0.7478],[0.4571,0.167,0.7323],[0.4506,0.1695,0.6995],[0.4447,0.1786,0.6046],[0.4177,0.1948,0.3546],[0.4509,0.1868,0.6374],[0.4588,0.1886,0.6667],[0.469,0.1883,0.6829],[0.4781,0.1867,0.6822],[0.4851,0.1849,0.6838],[0.4899,0.1834,0.6833],[0.4143,0.1949,0.1445],[0.4837,0.2222,0.8173],[0.4964,0.2021,0.8757],[0.4956,0.2216,0.9525],[0.499,0.225,0.9249],[0.4951,0.2224,0.9238],[0.4857,0.2243,0.7951],[0.501,0.2259,0.9393],[0.5011,0.2271,0.8691],[0.4896,0.1782,0.6571],[0.4938,0.1805,0.6893],[0.4963,0.1823,0.7324],[0.4571,0.176,0.6537],[0.4516,0.1737,0.6559],[0.5159,0.2003,0.9043],[0.5536,0.1839,0.5624],[0.5161,0.2267,0.8621],[0.5802,0.1649,0.2809],[0.5335,0.1863,0.6294],[0.5403,0.1877,0.6221],[0.547,0.1887,0.6038],[0.5558,0.1866,0.5526],[0.5282,0.1844,0.633],[0.548,0.1738,0.6554],[0.54,0.173,0.6596],[0.5547,0.1757,0.6341],[0.5583,0.1782,0.6064],[0.5612,0.1917,0.5215],[0.5308,0.2853,0.6289],[0.5563,0.1829,0.5452],[0.5825,0.1915,0.2509],[0.5697,0.1888,0.4621],[0.5416,0.2173,0.6748],[0.5131,0.2455,0.8032],[0.5114,0.2524,0.7708],[0.5217,0.2486,0.7605],[0.5268,0.2519,0.7124],[0.518,0.2532,0.7416],[0.523,0.2544,0.6986],[0.5361,0.2609,0.6218],[0.5157,0.224,0.9691],[0.5171,0.2172,0.9888],[0.5695,0.176,0.596],[0.5283,0.199,0.7037],[0.5321,0.221,0.809],[0.5321,0.217,0.7912],[0.5606,0.2177,0.5897],[0.5166,0.2082,0.9566],[0.5558,0.1688,0.7173],[0.5645,0.1717,0.6659],[0.5752,0.1544,0.4052],[0.5242,0.17,0.7814],[0.5325,0.1741,0.6439],[0.5419,0.2551,0.6004],[0.5728,0.2528,0.0811],[0.5264,0.2246,0.789],[0.5204,0.2266,0.8055],[0.5321,0.2574,0.6102],[0.5304,0.2571,0.629],[0.5689,0.1685,0.6335],[0.5316,0.2235,0.7759],[0.5426,0.1678,0.7558],[0.5453,0.1634,0.7686],[0.5506,0.1394,0.652],[0.571,0.1612,0.5372],[0.5461,0.1509,0.7173],[0.5739,0.1738,0.5424],[0.5765,0.1698,0.4208],[0.5125,0.2492,0.7934],[0.5198,0.2511,0.7533],[0.525,0.2532,0.7105],[0.5244,0.2256,0.7828],[0.5312,0.2572,0.6212],[0.5282,0.2581,0.6627],[0.5294,0.2569,0.6328],[0.5235,0.2232,0.8744],[0.5216,0.2551,0.6869],[0.5166,0.2545,0.7148],[0.5105,0.2542,0.7404],[0.5129,0.2716,0.717],[0.5121,0.2657,0.7666],[0.5118,0.2613,0.7702],[0.5113,0.2572,0.7539],[0.5105,0.2541,0.7486],[0.5215,0.2552,0.693],[0.5231,0.2569,0.7007],[0.5247,0.2591,0.708],[0.526,0.2615,0.6978],[0.5354,0.2428,0.6961],[0.5796,0.2198,0.0],[0.5252,0.256,0.6593],[0.5267,0.257,0.6641],[0.5174,0.2294,0.8056],[0.5281,0.2273,0.7358],[0.5189,0.2281,0.808],[0.5348,0.2034,0.6757],[0.5456,0.2089,0.6521],[0.5327,0.2199,0.7562],[0.5661,0.1456,0.5366],[0.5613,0.1547,0.6318],[0.5594,0.1646,0.7027],[0.5301,0.2651,0.6566],[0.5285,0.1631,0.807],[0.5298,0.1491,0.7712],[0.5331,0.1357,0.7266],[0.5525,0.1883,0.5769],[0.5677,0.1969,0.4817],[0.5249,0.1828,0.6277],[0.5644,0.1814,0.5547],[0.5239,0.1945,0.732],[0.5282,0.219,0.8716],[0.5776,0.2028,0.4105],[0.5624,0.2007,0.5331],[0.5533,0.2021,0.5909],[0.5404,0.1993,0.6295],[0.5313,0.1954,0.6489],[0.5249,0.192,0.6731],[0.516,0.1858,0.81],[0.5758,0.2164,0.4197],[0.5701,0.1816,0.5248],[0.5126,0.2271,0.9405],[0.5284,0.2059,0.7217],[0.5823,0.191,0.0517],[0.5204,0.1886,0.6879],[0.5324,0.22,0.6947],[0.5591,0.1837,0.5339],[0.528,0.2142,0.8503],[0.5774,0.2358,0.0249],[0.5254,0.1806,0.6126],[0.5226,0.2106,0.9147],[0.5621,0.2698,0.3897],[0.5608,0.2778,0.2899],[0.5813,0.2188,0.2084],[0.5691,0.26,0.3134],[0.5796,0.1793,0.3189],[0.5331,0.2944,0.5921],[0.5113,0.2283,0.8632],[0.5339,0.2113,0.693],[0.575,0.1905,0.3976],[0.547,0.1847,0.5982],[0.5411,0.1842,0.6162],[0.5296,0.2593,0.6511],[0.574,0.2298,0.3952],[0.5186,0.3055,0.5897],[0.5423,0.2951,0.4573],[0.5516,0.2879,0.3828],[0.5355,0.1831,0.624],[0.5303,0.1817,0.621],[0.5269,0.1811,0.613],[0.5749,0.1809,0.462],[0.5325,0.1775,0.6288],[0.5389,0.1768,0.6387],[0.5451,0.1775,0.6324],[0.5506,0.1792,0.615],[0.5535,0.1809,0.5924],[0.5823,0.1763,0.1527],[0.5509,0.1845,0.5792],[0.5296,0.2383,0.7347],[0.5268,0.2237,0.8139],[0.5171,0.236,0.7992],[0.5534,0.2794,0.4542],[0.5439,0.2872,0.5197],[0.5189,0.2989,0.6593],[0.5671,0.2668,0.18],[0.5278,0.1793,0.62],[0.5204,0.1968,0.815],[0.5319,0.3013,0.534],[0.5786,0.2334,0.2128],[0.5165,0.2545,0.7221],[0.518,0.2571,0.7296],[0.5192,0.2603,0.7395],[0.52,0.2641,0.7334],[0.5226,0.2689,0.6929],[0.527,0.2556,0.6626],[0.5287,0.2553,0.6614],[0.5302,0.2547,0.6603],[0.5397,0.2486,0.6468],[0.5653,0.2327,0.5181],[0.5198,0.1897,0.7669],[0.5216,0.1768,0.663],[0.5255,0.1775,0.6355],[0.5253,0.2559,0.6552],[0.5664,0.2496,0.4252],[0.5164,0.1771,0.7484],[0.5266,0.2767,0.6588],[0.5161,0.1932,0.8641],[0.525,0.2078,0.803],[0.5149,0.2799,0.7021],[0.5441,0.2645,0.5834],[0.5373,0.2259,0.6774],[0.5361,0.2716,0.6188],[0.5517,0.226,0.6422],[0.5428,0.2335,0.6611],[0.557,0.2375,0.5843],[0.5176,0.2899,0.6932],[0.5289,0.2115,0.7545],[0.5509,0.2706,0.523],[0.5411,0.2787,0.5685],[0.5499,0.2562,0.5693],[0.5722,0.2414,0.3723],[0.5588,0.2573,0.5064],[0.5751,0.2471,0.2351],[0.5475,0.2433,0.6257],[0.5242,0.2013,0.7651],[0.5259,0.2221,0.8853],[0.5299,0.2233,0.8183],[0.5233,0.218,0.9348],[0.5282,0.173,0.6794],[0.5406,0.1714,0.6901],[0.5509,0.1722,0.6834],[0.5587,0.1744,0.6541],[0.5631,0.1774,0.6118],[0.5637,0.1862,0.5095],[0.5828,0.2049,0.2249],[0.5569,0.1937,0.5498],[0.5498,0.1946,0.5907],[0.5406,0.1931,0.6204],[0.5322,0.1905,0.6324],[0.5261,0.1879,0.6459],[0.5221,0.1858,0.6522],[0.5807,0.2052,0.0047],[0.5292,0.2247,0.7889],[0.5208,0.2034,0.8559],[0.5212,0.2229,0.9366],[0.5167,0.2259,0.9155],[0.5208,0.2238,0.9074],[0.5266,0.2264,0.771],[0.5152,0.2267,0.9318],[0.514,0.2277,0.8626],[0.523,0.1809,0.6247],[0.5193,0.1824,0.6647],[0.5174,0.1839,0.7124],[0.5551,0.182,0.5723],[0.5603,0.1808,0.5696],[0.4696,0.1753,0.6668],[0.4762,0.1749,0.6668],[0.4696,0.1699,0.6668],[0.4629,0.1755,0.6668],[0.4696,0.1806,0.6668],[0.541,0.1798,0.6045],[0.5483,0.1808,0.6045],[0.5421,0.1745,0.6045],[0.5338,0.1787,0.6045],[0.54,0.185,0.6045]],"connections":[[0,11],[0,37],[0,164],[0,267],[1,4],[1,19],[1,44],[1,274],[2,94],[2,97],[2,141],[2,164],[2,167],[2,326],[2,370],[2,393],[3,51],[3,195],[3,196],[3,197],[3,236],[4,5],[4,44],[4,45],[4,51],[4,274],[4,275],[4,281],[5,51],[5,195],[5,281],[6,122],[6,168],[6,196],[6,197],[6,351],[6,419],[7,25],[7,33],[7,110],[7,163],[8,9],[8,55],[8,168],[8,193],[8,285],[8,417],[9,55],[9,107],[9,108],[9,151],[9,285],[9,336],[9,337],[10,109],[10,151],[10,338],[11,12],[11,37],[11,72],[11,267],[11,302],[12,13],[12,38],[12,72],[12,268],[12,302],[13,38],[13,82],[13,268],[13,312],[14,15],[14,86],[14,87],[14,316],[14,317],[15,16],[15,85],[15,86],[15,315],[15,316],[16,17],[16,85],[16,315],[17,18],[17,83],[17,84],[17,85],[17,313],[17,314],[17,315],[18,83],[18,200],[18,201],[18,313],[18,421],[19,44],[19,94],[19,125],[19,141],[19,274],[19,354],[19,370],[20,60],[20,79],[20,99],[20,166],[20,238],[20,242],[21,54],[21,68],[21,71],[21,162],[22,23],[22,26],[22,145],[22,153],[22,154],[22,230],[22,231],[23,24],[23,144],[23,145],[23,229],[23,230],[24,110],[24,144],[24,228],[24,229],[25,31],[25,33],[25,110],[25,130],[25,226],[25,228],[26,112],[26,154],[26,155],[26,231],[26,232],[27,28],[27,29],[27,159],[27,160],[27,222],[27,223],[28,56],[28,157],[28,158],[28,159],[28,221],[28,222],[29,30],[29,160],[29,223],[29,224],[30,160],[30,161],[30,224],[30,225],[30,247],[31,111],[31,117],[31,226],[31,228],[32,140],[32,171],[32,194],[32,201],[32,208],[32,211],[33,130],[33,246],[33,247],[34,127],[34,139],[34,143],[34,156],[34,227],[34,234],[35,111],[35,113],[35,124],[35,143],[35,226],[36,100],[36,101],[36,142],[36,203],[36,205],[36,206],[37,39],[37,72],[37,164],[37,167],[38,41],[38,72],[38,81],[38,82],[39,40],[39,72],[39,73],[39,92],[39,165],[39,167],[40,73],[40,74],[40,92],[40,185],[40,186],[41,42],[41,72],[41,73],[41,74],[41,81],[42,74],[42,80],[42,81],[42,183],[42,184],[43,57],[43,61],[43,91],[43,106],[43,146],[43,202],[43,204],[44,45],[44,125],[44,220],[44,237],[45,51],[45,134],[45,220],[46,53],[46,63],[46,70],[46,113],[46,124],[46,156],[46,225],[47,100],[47,114],[47,121],[47,126],[47,128],[47,217],[48,49],[48,64],[48,115],[48,131],[48,219],[48,235],[49,64],[49,102],[49,129],[49,131],[49,209],[50,101],[50,117],[50,118],[50,123],[50,187],[50,205],[51,134],[51,195],[51,236],[52,53],[52,63],[52,65],[52,66],[52,105],[52,222],[52,223],[53,63],[53,223],[53,224],[53,225],[54,68],[54,103],[54,104],[55,65],[55,107],[55,189],[55,193],[55,221],[56,157],[56,173],[56,190],[56,221],[57,61],[57,185],[57,186],[57,202],[57,212],[58,132],[58,172],[58,177],[58,215],[59,75],[59,166],[59,219],[59,235],[60,75],[60,99],[60,166],[60,240],[61,76],[61,146],[61,184],[61,185],[62,76],[62,77],[62,78],[62,96],[62,183],[62,191],[63,68],[63,70],[63,71],[63,104],[63,105],[64,98],[64,102],[64,129],[64,235],[64,240],[65,66],[65,107],[65,221],[65,222],[66,69],[66,105],[66,107],[67,69],[67,103],[67,104],[67,108],[67,109],[68,71],[68,104],[69,104],[69,105],[69,107],[69,108],[70,71],[70,139],[70,156],[71,139],[71,162],[72,73],[73,74],[74,184],[74,185],[75,166],[75,235],[75,240],[76,77],[76,146],[76,183],[76,184],[77,90],[77,91],[77,96],[77,146],[78,95],[78,96],[78,191],[79,166],[79,218],[79,237],[79,238],[79,239],[80,81],[80,183],[80,191],[81,82],[83,84],[83,181],[83,182],[83,201],[84,85],[84,180],[84,181],[85,86],[85,179],[85,180],[86,87],[86,178],[86,179],[87,178],[88,89],[88,95],[88,96],[88,178],[88,179],[89,90],[89,96],[89,179],[89,180],[90,91],[90,96],[90,180],[90,181],[91,106],[91,146],[91,181],[91,182],[92,165],[92,186],[92,206],[92,216],[93,132],[93,137],[93,227],[93,234],[94,141],[94,370],[95,96],[97,98],[97,99],[97,141],[97,165],[97,167],[97,242],[98,99],[98,129],[98,165],[98,203],[98,240],[99,240],[99,242],[100,101],[100,120],[100,121],[100,126],[100,142],[101,118],[101,119],[101,120],[101,205],[102,129],[103,104],[104,105],[106,182],[106,194],[106,204],[107,108],[108,109],[108,151],[109,151],[110,144],[110,163],[110,228],[111,116],[111,117],[111,123],[111,143],[111,226],[112,133],[112,155],[112,232],[112,233],[112,243],[112,244],[113,124],[113,225],[113,226],[113,247],[114,128],[114,174],[114,188],[114,217],[115,131],[115,218],[115,219],[115,220],[116,123],[116,137],[116,143],[116,227],[117,118],[117,123],[117,228],[117,229],[118,119],[118,229],[118,230],[119,120],[119,230],[120,121],[120,230],[120,231],[120,232],[121,128],[121,232],[122,168],[122,188],[122,193],[122,196],[122,245],[123,137],[123,147],[123,177],[123,187],[124,143],[124,156],[125,141],[125,237],[125,241],[126,129],[126,142],[126,209],[126,217],[127,139],[127,162],[127,234],[128,188],[128,232],[128,233],[128,245],[129,142],[129,203],[129,209],[130,226],[130,247],[131,134],[131,198],[131,209],[131,220],[132,137],[132,177],[133,155],[133,173],[133,190],[133,243],[134,198],[134,220],[134,236],[135,136],[135,138],[135,150],[135,169],[135,192],[135,214],[136,138],[136,150],[136,172],[137,177],[137,227],[138,172],[138,192],[138,213],[138,215],[139,156],[139,162],[140,148],[140,170],[140,171],[140,176],[140,211],[141,241],[141,242],[142,203],[143,156],[143,227],[144,145],[144,163],[145,153],[147,177],[147,187],[147,213],[147,215],[148,152],[148,171],[148,175],[148,176],[149,150],[149,170],[149,176],[150,169],[150,170],[151,337],[151,338],[152,175],[152,377],[153,154],[154,155],[157,158],[157,173],[158,159],[159,160],[160,161],[161,246],[161,247],[164,167],[164,267],[164,393],[165,167],[165,203],[165,206],[166,218],[166,219],[168,193],[168,351],[168,417],[169,170],[169,210],[169,211],[169,214],[170,176],[170,211],[171,175],[171,199],[171,208],[172,215],[173,190],[174,188],[174,196],[174,217],[174,236],[175,199],[175,377],[175,396],[177,215],[178,179],[179,180],[180,181],[181,182],[182,194],[182,201],[183,184],[183,191],[184,185],[185,186],[186,212],[186,216],[187,192],[187,205],[187,207],[187,213],[187,214],[188,196],[188,245],[189,190],[189,193],[189,221],[189,243],[189,244],[190,221],[190,243],[192,213],[192,214],[193,244],[193,245],[194,201],[194,204],[194,211],[195,197],[195,248],[195,281],[196,197],[196,236],[197,248],[197,419],[198,209],[198,217],[198,236],[199,200],[199,208],[199,396],[199,428],[200,201],[200,208],[200,421],[200,428],[201,208],[202,204],[202,210],[202,212],[202,214],[203,206],[204,210],[204,211],[205,206],[205,207],[205,216],[206,216],[207,212],[207,214],[207,216],[209,217],[210,211],[210,214],[212,214],[212,216],[213,215],[217,236],[218,219],[218,220],[218,237],[219,235],[220,237],[221,222],[222,223],[223,224],[224,225],[225,247],[226,247],[227,234],[228,229],[229,230],[230,231],[231,232],[232,233],[233,244],[233,245],[235,240],[237,239],[237,241],[238,239],[238,241],[238,242],[239,241],[241,242],[243,244],[244,245],[246,247],[248,281],[248,419],[248,456],[249,255],[249,263],[249,339],[249,390],[250,290],[250,309],[250,328],[250,392],[250,458],[250,459],[250,462],[251,284],[251,298],[251,301],[251,389],[252,253],[252,256],[252,374],[252,380],[252,381],[252,450],[252,451],[253,254],[253,373],[253,374],[253,449],[253,450],[254,339],[254,373],[254,448],[254,449],[255,261],[255,263],[255,339],[255,359],[255,446],[255,448],[256,341],[256,381],[256,382],[256,451],[256,452],[257,258],[257,259],[257,386],[257,387],[257,442],[257,443],[258,286],[258,384],[258,385],[258,386],[258,441],[258,442],[259,260],[259,387],[259,443],[259,444],[260,387],[260,388],[260,444],[260,445],[260,466],[260,467],[261,340],[261,346],[261,446],[261,448],[262,369],[262,396],[262,418],[262,421],[262,428],[262,431],[263,359],[263,466],[263,467],[264,356],[264,368],[264,372],[264,383],[264,447],[264,454],[265,340],[265,342],[265,353],[265,372],[265,446],[266,329],[266,330],[266,371],[266,423],[266,425],[266,426],[267,269],[267,302],[267,393],[268,271],[268,302],[268,311],[268,312],[269,270],[269,302],[269,303],[269,322],[269,391],[269,393],[270,303],[270,304],[270,322],[270,409],[270,410],[271,272],[271,302],[271,303],[271,304],[271,311],[272,304],[272,310],[272,311],[272,407],[272,408],[273,287],[273,291],[273,321],[273,335],[273,375],[273,422],[273,424],[274,275],[274,354],[274,440],[274,457],[275,281],[275,363],[275,440],[276,283],[276,293],[276,300],[276,342],[276,353],[276,383],[276,445],[277,329],[277,343],[277,350],[277,355],[277,357],[277,437],[278,279],[278,294],[278,344],[278,360],[278,439],[278,455],[279,294],[279,331],[279,358],[279,360],[279,429],[280,330],[280,346],[280,347],[280,352],[280,411],[280,425],[281,363],[281,456],[282,283],[282,293],[282,295],[282,296],[282,334],[282,442],[282,443],[283,293],[283,443],[283,444],[283,445],[284,298],[284,332],[284,333],[285,295],[285,336],[285,413],[285,417],[285,441],[286,384],[286,398],[286,414],[286,441],[287,291],[287,409],[287,410],[287,422],[287,432],[288,361],[288,397],[288,401],[288,435],[289,290],[289,305],[289,392],[289,439],[289,455],[290,305],[290,328],[290,392],[290,460],[291,306],[291,375],[291,408],[291,409],[292,306],[292,307],[292,308],[292,325],[292,407],[292,415],[293,298],[293,300],[293,301],[293,333],[293,334],[294,327],[294,331],[294,358],[294,455],[294,460],[295,296],[295,336],[295,441],[295,442],[296,299],[296,334],[296,336],[297,299],[297,332],[297,333],[297,337],[297,338],[298,301],[298,333],[299,333],[299,334],[299,336],[299,337],[300,301],[300,368],[300,383],[301,368],[301,389],[302,303],[303,304],[304,408],[304,409],[305,455],[305,460],[306,307],[306,375],[306,407],[306,408],[307,320],[307,321],[307,325],[307,375],[308,324],[308,325],[308,415],[309,392],[309,438],[309,457],[309,459],[310,311],[310,407],[310,415],[311,312],[313,314],[313,405],[313,406],[313,421],[314,315],[314,404],[314,405],[315,316],[315,403],[315,404],[316,317],[316,402],[316,403],[317,402],[318,319],[318,324],[318,325],[318,402],[318,403],[319,320],[319,325],[319,403],[319,404],[320,321],[320,325],[320,404],[320,405],[321,335],[321,375],[321,405],[321,406],[322,391],[322,410],[322,426],[322,436],[323,361],[323,366],[323,447],[323,454],[324,325],[326,327],[326,328],[326,370],[326,391],[326,393],[326,462],[327,328],[327,358],[327,391],[327,423],[327,460],[328,460],[328,462],[329,330],[329,349],[329,350],[329,355],[329,371],[330,347],[330,348],[330,349],[330,425],[331,358],[332,333],[333,334],[335,406],[335,418],[335,424],[336,337],[337,338],[339,373],[339,390],[339,448],[340,345],[340,346],[340,352],[340,372],[340,446],[341,362],[341,382],[341,452],[341,453],[341,463],[341,464],[342,353],[342,445],[342,446],[342,467],[343,357],[343,399],[343,412],[343,437],[344,360],[344,438],[344,439],[344,440],[345,352],[345,366],[345,372],[345,447],[346,347],[346,352],[346,448],[346,449],[347,348],[347,449],[347,450],[348,349],[348,450],[349,350],[349,450],[349,451],[349,452],[350,357],[350,452],[351,412],[351,417],[351,419],[351,465],[352,366],[352,376],[352,401],[352,411],[353,372],[353,383],[354,370],[354,457],[354,461],[355,358],[355,371],[355,429],[355,437],[356,368],[356,389],[356,454],[357,412],[357,452],[357,453],[357,465],[358,371],[358,423],[358,429],[359,446],[359,467],[360,363],[360,420],[360,429],[360,440],[361,366],[361,401],[362,382],[362,398],[362,414],[362,463],[363,420],[363,440],[363,456],[364,365],[364,367],[364,379],[364,394],[364,416],[364,434],[365,367],[365,379],[365,397],[366,401],[366,447],[367,397],[367,416],[367,433],[367,435],[368,383],[368,389],[369,377],[369,395],[369,396],[369,400],[369,431],[370,461],[370,462],[371,423],[372,383],[372,447],[373,374],[373,390],[374,380],[376,401],[376,411],[376,433],[376,435],[377,396],[377,400],[378,379],[378,395],[378,400],[379,394],[379,395],[380,381],[381,382],[384,385],[384,398],[385,386],[386,387],[387,388],[388,466],[391,393],[391,423],[391,426],[392,438],[392,439],[394,395],[394,430],[394,431],[394,434],[395,400],[395,431],[396,428],[397,435],[398,414],[399,412],[399,419],[399,437],[399,456],[401,435],[402,403],[403,404],[404,405],[405,406],[406,418],[406,421],[407,408],[407,415],[408,409],[409,410],[410,432],[410,436],[411,416],[411,425],[411,427],[411,433],[411,434],[412,419],[412,465],[413,414],[413,417],[413,441],[413,463],[413,464],[414,441],[414,463],[416,433],[416,434],[417,464],[417,465],[418,421],[418,424],[418,431],[419,456],[420,429],[420,437],[420,456],[421,428],[422,424],[422,430],[422,432],[422,434],[423,426],[424,430],[424,431],[425,426],[425,427],[425,436],[426,436],[427,432],[427,434],[427,436],[429,437],[430,431],[430,434],[432,434],[432,436],[433,435],[437,456],[438,439],[438,440],[438,457],[439,455],[440,457],[441,442],[442,443],[443,444],[444,445],[445,467],[446,467],[447,454],[448,449],[449,450],[450,451],[451,452],[452,453],[453,464],[453,465],[455,460],[457,459],[457,461],[458,459],[458,461],[458,462],[459,461],[461,462],[463,464],[464,465],[466,467]]};</script>
+<script>
+(function(){
+"use strict";
+var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var TOUCH = window.matchMedia("(pointer: coarse)").matches;
+var clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
+var sstep=function(a,b,v){var t=clamp((v-a)/(b-a),0,1);return t*t*(3-2*t);};
+var lerp=function(a,b,t){return a+(b-a)*t;};
+
+/* marquee */
+var mq=document.getElementById("mqTrack"); mq.innerHTML+=mq.innerHTML;
+
+/* copy + newsletter (preview) */
+document.getElementById("copyMail").addEventListener("click",function(){
+  var n=document.getElementById("copyNote"); function done(){n.textContent="Copied. Talk soon.";}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText("mike@1propertymarket.com").then(done,done);}else{done();}
+});
+document.getElementById("nlForm").addEventListener("submit",function(e){e.preventDefault();
+  document.getElementById("nlNote").textContent="You're in (preview only: connect the form to the list before launch). Welcome to the ecosystem.";});
+
+/* reveals */
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});},{threshold:0.12});
+document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+
+/* ============ assets: machine duotone + dot field ============ */
+var stage=document.getElementById("heroStage"), wrap=document.getElementById("portraitWrap"), img=document.getElementById("portrait");
+var mCan=document.getElementById("machineCanvas"), mCtx=mCan.getContext("2d");
+var lCan=document.getElementById("lensCanvas"), lCtx=lCan.getContext("2d");
+var machineImg=null, dotPts=[];
+function buildMachine(){
+  try{
+  var w=img.naturalWidth, h=img.naturalHeight;
+  var off=document.createElement("canvas"); off.width=w; off.height=h;
+  var o=off.getContext("2d",{willReadFrequently:true});
+  o.drawImage(img,0,0);
+  var id=o.getImageData(0,0,w,h), d=id.data;
+  for(var i=0;i<d.length;i+=4){
+    if(d[i+3]<10) continue;
+    var lum=(0.2126*d[i]+0.7152*d[i+1]+0.0722*d[i+2])/255;
+    var t=Math.pow(lum,0.82);
+    d[i]  = 10 + t*168;   /* steel duotone: deep navy-black to pale steel */
+    d[i+1]= 14 + t*186;
+    d[i+2]= 26 + t*216;
+  }
+  o.putImageData(id,0,0); machineImg=off;
+  /* dot field sampled from alpha + darkness */
+  dotPts=[]; var step=7;
+  var small=document.createElement("canvas"); small.width=w; small.height=h;
+  var s=small.getContext("2d",{willReadFrequently:true}); s.drawImage(img,0,0);
+  var sd=s.getImageData(0,0,w,h).data;
+  for(var y=0;y<h;y+=step) for(var x=0;x<w;x+=step){
+    var j=(y*w+x)*4;
+    if(sd[j+3]>120){
+      var lum2=0.2126*sd[j]+0.7152*sd[j+1]+0.0722*sd[j+2];
+      dotPts.push({nx:x/w, ny:y/h, red:(sd[j]>150&&sd[j+1]<110&&sd[j+2]<110), dark:lum2<80});
+    }
+  }
+  }catch(err){ machineImg=null; dotPts=[]; /* canvas unreadable (e.g. file:// taint): skip machine layer, keep the rest of the engine alive */ }
+}
+if(img.complete&&img.naturalWidth) buildMachine(); else img.addEventListener("load",buildMachine);
+
+/* ============ mesh data ============ */
+var MESH=window.__MESH__;
+var meshPts=[], meshConns=[];
+if(MESH){
+  var cf=MESH.crop_frac;
+  meshPts=MESH.points.map(function(p){
+    var u=cf[0]+p[0]*(cf[2]-cf[0]), v=cf[1]+p[1]*(cf[3]-cf[1]);
+    var dx=(p[0]-0.5)/0.36, dy=(p[1]-0.44)/0.34;
+    var dome=Math.sqrt(Math.max(0,1-dx*dx-dy*dy));
+    var z=(p.length>2)? p[2] : dome;
+    return {u:u, vc:v/(MESH.vscale||0.56), z:z};
+  });
+  meshConns=MESH.connections;
+  document.getElementById("ptCount").textContent=meshPts.length.toLocaleString("en-US");
+}
+function projectMesh(rect, yawA, pitchA, out){
+  var cx=rect.x+rect.w*0.5, cy=rect.y+rect.h*0.205;
+  var scale=rect.w/460, cyaw=Math.cos(yawA), syaw=Math.sin(yawA), cpit=Math.cos(pitchA), spit=Math.sin(pitchA);
+  for(var i=0;i<meshPts.length;i++){
+    var p=meshPts[i];
+    var X=rect.x+p.u*rect.w-cx, Y=rect.y+p.vc*rect.h-cy, Z=p.z*64*scale;
+    var xr=X*cyaw+Z*syaw, zr=-X*syaw+Z*cyaw;
+    var yr=Y*cpit-zr*spit;
+    out[i]={x:cx+xr, y:cy+yr};
+  }
+  return out;
+}
+var proj=[];
+
+/* ============ state ============ */
+var W=0,H=0;
+function resize(){
+  var DPR=Math.min(window.devicePixelRatio||1,1.75);
+  var r=stage.getBoundingClientRect(); W=r.width; H=r.height;
+  [mCan,lCan].forEach(function(c){c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); c.getContext("2d").setTransform(DPR,0,0,DPR,0,0);});
+}
+var sm={p:0, lensX:0, lensY:0, lensOn:0, yaw:0, pitch:0, px:0, py:0, jp:0, pvX:0, pvY:0};
+var mouse={x:0.5, y:0.5, lx:-999, ly:-999, on:false};
+stage.addEventListener("mousemove",function(e){
+  var r=stage.getBoundingClientRect();
+  mouse.lx=e.clientX-r.left; mouse.ly=e.clientY-r.top;
+  mouse.x=mouse.lx/Math.max(W,1); mouse.y=mouse.ly/Math.max(H,1); mouse.on=true;
+});
+stage.addEventListener("mouseleave",function(){mouse.on=false;});
+/* touch: the lens follows the finger only while it is down — never parked over the face */
+function touchPos(e){ var t=e.touches[0]; if(!t) return; var r=stage.getBoundingClientRect();
+  mouse.lx=t.clientX-r.left; mouse.ly=t.clientY-r.top; mouse.on=true; }
+stage.addEventListener("touchstart",touchPos,{passive:true});
+stage.addEventListener("touchmove",touchPos,{passive:true});
+stage.addEventListener("touchend",function(){mouse.on=false;});
+stage.addEventListener("touchcancel",function(){mouse.on=false;});
+var depthEls=document.querySelectorAll("[data-depth]");
+var ghost=document.getElementById("bigGhost");
+var shade=document.getElementById("gridShade");
+var blobs=[document.getElementById("blob1"),document.getElementById("blob2"),document.getElementById("blob3")];
+var morph=document.getElementById("morphLine"), morphSpans=morph.querySelectorAll(".ml span");
+var hudBL=document.getElementById("hudBL"), hudBR=document.getElementById("hudBR");
+var heroName=document.getElementById("heroName"), heroNav=document.getElementById("heroNav");
+var heroTag=document.getElementById("heroTag"), heroStats=document.getElementById("heroStats"), scrollHint=document.getElementById("scrollHint");
+var stateEl=document.getElementById("heroState"), yawEl=document.getElementById("yaw"), pitchEl=document.getElementById("pitch");
+var dark=false;
+function setDark(on){
+  if(on===dark) return; dark=on;
+  var c=on?"#f2efe7":"";
+  hudBL.style.color=c; hudBR.style.color=c; heroName.style.color=c; heroNav.style.color=c;
+  heroTag.style.color=c; heroStats.style.color=c;
+}
+
+/* journey */
+var jScroll=document.getElementById("journeyScroll"), jTrack=document.getElementById("jTrack"),
+    jFill=document.getElementById("jFill"), jTitle=document.getElementById("journeyTitle"),
+    jCards=[].slice.call(jTrack.children);
+
+/* row preview */
+var preview=document.getElementById("rowPreview"), previewImg=preview.querySelector("img"), pv={on:false,x:0,y:0};
+document.querySelectorAll(".row[data-img]").forEach(function(row){
+  row.addEventListener("mouseenter",function(e){ previewImg.src=row.getAttribute("data-img"); pv.on=true; pv.x=e.clientX; pv.y=e.clientY; preview.classList.add("show"); });
+  row.addEventListener("mousemove",function(e){ pv.x=e.clientX; pv.y=e.clientY; });
+  row.addEventListener("mouseleave",function(){ pv.on=false; preview.classList.remove("show"); });
+});
+
+/* CTA bar */
+var cta=document.getElementById("ctaBar");
+
+function frame(now){
+  var vh=window.innerHeight, sy=window.scrollY;
+  /* targets */
+  var heroTotal=document.getElementById("heroScroll").offsetHeight-vh;
+  var pT=clamp(sy/Math.max(heroTotal,1),0,1);
+  var jr=jScroll.getBoundingClientRect();
+  var jpT=clamp(-jr.top/Math.max(jScroll.offsetHeight-vh,1),0,1);
+  var k=RM?1:0.085, kFast=RM?1:0.16;
+  sm.p=lerp(sm.p,pT,k); sm.jp=lerp(sm.jp,jpT,k);
+  /* lens target */
+  var ir=img.getBoundingClientRect(), sr=stage.getBoundingClientRect();
+  var faceX=ir.left-sr.left+ir.width*0.503, faceY=ir.top-sr.top+ir.height*0.145;
+  var lxT=mouse.lx, lyT=mouse.ly;
+  var onT=(mouse.on&&sm.p<0.55)?1:0;
+  if(sm.lensX===0&&lxT>0){sm.lensX=lxT; sm.lensY=lyT;}
+  sm.lensX=lerp(sm.lensX,lxT,kFast); sm.lensY=lerp(sm.lensY,lyT,kFast); sm.lensOn=lerp(sm.lensOn,onT,kFast);
+  var yawT=(mouse.x-0.5)*9, pitchT=(0.5-mouse.y)*7;
+  if(TOUCH){yawT=Math.sin(now/2600)*2.4; pitchT=Math.cos(now/3400)*1.6;}
+  sm.yaw=lerp(sm.yaw,yawT,RM?1:0.06); sm.pitch=lerp(sm.pitch,pitchT,RM?1:0.06);
+  sm.px=lerp(sm.px,mouse.x-0.5,RM?1:0.05); sm.py=lerp(sm.py,mouse.y-0.5,RM?1:0.05);
+
+  /* ---- hero apply ---- */
+  var p=sm.p;
+  var zoom=1+sstep(0,0.85,p)*1.3;
+  var parX=sm.px*-16*(1-p), parY=sm.py*-10*(1-p);
+  wrap.style.transform="translateX(-50%) translate("+parX+"px,"+parY+"px) scale("+zoom+")";
+  wrap.style.transformOrigin="50% 8%";
+  wrap.style.opacity=1-sstep(0.45,0.82,p);
+  shade.style.opacity=sstep(0.22,0.6,p);
+  blobs.forEach(function(b){b.style.opacity=sstep(0.5,0.88,p)*0.85;});
+  ghost.style.transform="translate(-50%,-50%) translate("+(sm.px*30)+"px,"+(sm.py*20)+"px)";
+  ghost.style.opacity=1-sstep(0.1,0.4,p);
+  depthEls.forEach(function(el){var d=parseFloat(el.getAttribute("data-depth"))||10;
+    el.style.transform="translate("+(sm.px*d*-1)+"px,"+(sm.py*d*-1)+"px)"; el.style.opacity=0.55*(1-sstep(0.15,0.45,p));});
+  var mT=sstep(0.52,0.68,p), mOut=1-sstep(0.93,1,p);
+  morph.style.opacity=mT*mOut;
+  morphSpans.forEach(function(s,i){ s.style.transform="translateY("+((1-sstep(0.52+i*0.07,0.68+i*0.07,p))*110)+"%)"; });
+  heroTag.style.opacity=1-sstep(0.04,0.26,p); heroStats.style.opacity=1-sstep(0.04,0.26,p);
+  scrollHint.style.opacity=1-sstep(0,0.1,p);
+  setDark(p>0.35);
+  stateEl.textContent=p<0.4?"Tracking":(p<0.72?"Converting":"Dissolving");
+  yawEl.textContent=sm.yaw.toFixed(1)+"°"; pitchEl.textContent=sm.pitch.toFixed(1)+"°";
+
+  /* ---- machine canvas ---- */
+  var morphM=sstep(0.42,0.85,p);
+  mCtx.clearRect(0,0,W,H);
+  if(morphM>0.01&&machineImg){
+    var rect={x:ir.left-sr.left, y:ir.top-sr.top, w:ir.width, h:ir.height};
+    mCtx.save(); mCtx.globalAlpha=morphM;
+    mCtx.drawImage(machineImg,rect.x,rect.y,rect.w,rect.h);
+    /* dot field */
+    var t=now/1000;
+    for(var i=0;i<dotPts.length;i++){
+      var d=dotPts[i];
+      var fl=0.75+0.25*Math.sin(t*2.4+i*1.7);
+      mCtx.fillStyle=d.red?"rgba(255,64,92,"+(0.85*fl)+")":(d.dark?"rgba(160,190,235,"+(0.5*fl)+")":"rgba(210,224,248,"+(0.30*fl)+")");
+      mCtx.fillRect(rect.x+d.nx*rect.w, rect.y+d.ny*rect.h, 1.7, 1.7);
+    }
+    /* scanline sweep */
+    var scanY=rect.y+(((now*0.11)%(rect.h*1.3))-rect.h*0.15);
+    var grad=mCtx.createLinearGradient(0,scanY-26,0,scanY+26);
+    grad.addColorStop(0,"rgba(200,16,46,0)"); grad.addColorStop(0.5,"rgba(200,16,46,0.30)"); grad.addColorStop(1,"rgba(200,16,46,0)");
+    mCtx.fillStyle=grad; mCtx.fillRect(rect.x,scanY-26,rect.w,52);
+    mCtx.restore();
+    /* full mesh over machine */
+    if(meshPts.length){
+      projectMesh(rect, sm.yaw*0.030, sm.pitch*0.022, proj);
+      mCtx.save(); mCtx.globalAlpha=morphM*0.8;
+      mCtx.strokeStyle="rgba(190,208,240,0.5)"; mCtx.lineWidth=0.7; mCtx.beginPath();
+      for(var c=0;c<meshConns.length;c++){var a=proj[meshConns[c][0]], b=proj[meshConns[c][1]]; if(a&&b){mCtx.moveTo(a.x,a.y); mCtx.lineTo(b.x,b.y);} }
+      mCtx.stroke(); mCtx.fillStyle="rgba(240,244,252,0.9)";
+      for(var q=0;q<proj.length;q++){ if(proj[q]) mCtx.fillRect(proj[q].x-1,proj[q].y-1,2,2); }
+      mCtx.restore();
+    }
+  }
+
+  /* ---- lens canvas ---- */
+  lCtx.clearRect(0,0,W,H);
+  if(sm.lensOn>0.02&&morphM<0.65&&meshPts.length){
+    var rect2={x:ir.left-sr.left, y:ir.top-sr.top, w:ir.width, h:ir.height};
+    projectMesh(rect2, sm.yaw*0.030, sm.pitch*0.022, proj);
+    var R=window.innerWidth<860?86:120, lx=sm.lensX, ly=sm.lensY;
+    lCtx.save(); lCtx.globalAlpha=sm.lensOn*(1-morphM*1.3);
+    lCtx.beginPath(); lCtx.arc(lx,ly,R,0,Math.PI*2); lCtx.clip();
+    lCtx.fillStyle="rgba(5,7,13,0.93)"; lCtx.fillRect(lx-R,ly-R,R*2,R*2);
+    /* machine world inside the lens: faint grid everywhere, dot-field rendering over the portrait */
+    lCtx.strokeStyle="rgba(150,175,220,0.10)"; lCtx.lineWidth=1; lCtx.beginPath();
+    for(var gx=Math.floor((lx-R)/18)*18; gx<lx+R; gx+=18){ lCtx.moveTo(gx,ly-R); lCtx.lineTo(gx,ly+R); }
+    for(var gy=Math.floor((ly-R)/18)*18; gy<ly+R; gy+=18){ lCtx.moveTo(lx-R,gy); lCtx.lineTo(lx+R,gy); }
+    lCtx.stroke();
+    for(var di=0; di<dotPts.length; di++){ var dp=dotPts[di]; var dpx=rect2.x+dp.nx*rect2.w, dpy=rect2.y+dp.ny*rect2.h;
+      if((dpx-lx)*(dpx-lx)+(dpy-ly)*(dpy-ly)<R*R){ lCtx.fillStyle=dp.red?"rgba(255,64,92,0.85)":(dp.dark?"rgba(160,190,235,0.55)":"rgba(210,224,248,0.35)"); lCtx.fillRect(dpx-0.85,dpy-0.85,1.7,1.7); } }
+    lCtx.strokeStyle="rgba(215,226,246,0.72)"; lCtx.lineWidth=0.7; lCtx.beginPath();
+    for(var c2=0;c2<meshConns.length;c2++){
+      var a2=proj[meshConns[c2][0]], b2=proj[meshConns[c2][1]];
+      if(a2&&b2&&((a2.x-lx)*(a2.x-lx)+(a2.y-ly)*(a2.y-ly)<R*R)&&((b2.x-lx)*(b2.x-lx)+(b2.y-ly)*(b2.y-ly)<R*R)){ lCtx.moveTo(a2.x,a2.y); lCtx.lineTo(b2.x,b2.y); }
+    }
+    lCtx.stroke(); lCtx.fillStyle="#f2f5fb";
+    for(var q2=0;q2<proj.length;q2++){ var pp=proj[q2]; if(pp&&(pp.x-lx)*(pp.x-lx)+(pp.y-ly)*(pp.y-ly)<R*R) lCtx.fillRect(pp.x-1.1,pp.y-1.1,2.2,2.2); }
+    lCtx.restore();
+    lCtx.save(); lCtx.globalAlpha=sm.lensOn;
+    lCtx.beginPath(); lCtx.arc(lx,ly,R,0,Math.PI*2); lCtx.strokeStyle="rgba(200,16,46,0.95)"; lCtx.lineWidth=1.5; lCtx.stroke();
+    lCtx.strokeStyle="rgba(200,16,46,0.8)"; lCtx.lineWidth=1.5;
+    [[0,-1],[0,1],[-1,0],[1,0]].forEach(function(dv){
+      lCtx.beginPath(); lCtx.moveTo(lx+dv[0]*(R+4), ly+dv[1]*(R+4)); lCtx.lineTo(lx+dv[0]*(R+13), ly+dv[1]*(R+13)); lCtx.stroke(); });
+    lCtx.restore();
+  }
+
+  /* ---- journey apply ---- */
+  var max=Math.max(jTrack.scrollWidth-window.innerWidth+window.innerWidth*0.05,0);
+  var tx=-sm.jp*max;
+  jTrack.style.transform="translateX("+tx+"px)";
+  jTitle.style.transform="translateX("+(-sm.jp*window.innerWidth*0.22)+"px)";
+  jFill.style.width=(sm.jp*100)+"%";
+  for(var ci=0;ci<jCards.length;ci++){
+    var card=jCards[ci];
+    var cx=card.offsetLeft+tx+card.offsetWidth/2;
+    var close=1-clamp(Math.abs(cx-window.innerWidth/2)/(window.innerWidth*0.52),0,1);
+    var stag=(ci%2===0?-vh*0.055:vh*0.05);
+    card.style.transform="translateY("+stag+"px) scale("+(0.93+0.07*close)+")";
+    card.style.opacity=0.32+0.68*close;
+    if(close>0.55) card.classList.add("on"); else card.classList.remove("on");
+  }
+
+  /* ---- row preview follow ---- */
+  sm.pvX=lerp(sm.pvX,pv.x,0.12); sm.pvY=lerp(sm.pvY,pv.y,0.12);
+  preview.style.left=(sm.pvX+30)+"px"; preview.style.top=(sm.pvY-46)+"px";
+
+  /* ---- CTA ---- */
+  var heroH=document.getElementById("heroScroll").offsetHeight;
+  var nearEnd=(vh+sy)>(document.body.scrollHeight-560);
+  cta.classList.toggle("show", sy>heroH*0.8&&!nearEnd);
+
+  requestAnimationFrame(frame);
+}
+window.addEventListener("resize",function(){resize();});
+resize();
+requestAnimationFrame(frame);
+/* the .intro entrance animation fills forwards and would override the JS-driven
+   transforms/opacity forever — strip it once the entrance has played */
+setTimeout(function(){ document.querySelectorAll(".intro").forEach(function(e){ e.classList.remove("intro"); e.style.opacity=""; }); },2050);
+})();
+</script>
+</body>
+</html>
