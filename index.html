@@ -40,6 +40,7 @@ img{user-select:none;-webkit-user-drag:none}
 #blob3{width:26vw;height:26vw;left:34%;bottom:-10%;background:rgba(168,132,44,.30)}
 #bigGhost{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);z-index:1;font-weight:900;text-transform:uppercase;
   font-size:clamp(120px,24vw,380px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(11,11,13,.13);white-space:nowrap;pointer-events:none}
+#fireCanvas{position:absolute;left:50%;bottom:-10%;width:120%;height:215%;transform:translateX(-50%);pointer-events:none}
 #portraitWrap{position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);height:96%;z-index:3;will-change:transform,opacity}
 #portrait{height:100%;width:auto;display:block;filter:drop-shadow(0 30px 50px rgba(20,18,10,.22))}
 #machineCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
@@ -197,7 +198,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <span class="binary b-gold" data-depth="22" style="top:20%;right:4%">1101 0010 1011 0110</span>
     <span class="binary b-mint" data-depth="10" style="top:79%;right:6%">0101 1010 0110</span>
     <span class="binary b-navy" data-depth="38" style="top:44%;left:9%">0010 1011</span>
-    <div id="bigGhost" aria-hidden="true">Makabi</div>
+    <div id="bigGhost" aria-hidden="true">Makabi<canvas id="fireCanvas"></canvas></div>
     <div id="gridShade"></div>
     <div class="blob" id="blob1"></div><div class="blob" id="blob2"></div><div class="blob" id="blob3"></div>
     <div id="portraitWrap" class="intro" style="animation-delay:.15s">
@@ -502,6 +503,7 @@ function resize(){
   var r=stage.getBoundingClientRect(); W=r.width; H=r.height;
   [mCan,lCan].forEach(function(c){c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); c.getContext("2d").setTransform(DPR,0,0,DPR,0,0);});
   cacheHotRects();
+  fireResize();
 }
 var sm={p:0, lensX:0, lensY:0, lensOn:0, yaw:0, pitch:0, px:0, py:0, jp:0, pvX:0, pvY:0};
 var mouse={x:0.5, y:0.5, lx:-999, ly:-999, on:false};
@@ -554,6 +556,110 @@ function updateHot(lx,ly,R,on){
     var has=el.classList.contains("hot");
     if(hit&&!has) el.classList.add("hot"); else if(!hit&&has) el.classList.remove("hot");
   }
+}
+
+/* ============ MAKABI fire: the ghost letters burn on hover ============ */
+var fireCan=document.getElementById("fireCanvas"), fireCtx=fireCan.getContext("2d");
+var FW=0, FH=0, SW=0, SH=0, heat=null, heat2=null, maskArr=null;
+var simCan=document.createElement("canvas"), simCtx=null, fireImg=null;
+var ignite=0, lastChar=-1, embers=[];
+var LUT=(function(){
+  var c=document.createElement("canvas"); c.width=256; c.height=1;
+  var x=c.getContext("2d"); var g=x.createLinearGradient(0,0,256,0);
+  g.addColorStop(0,"rgba(0,0,0,0)"); g.addColorStop(0.18,"rgba(120,12,0,30)");
+  g.addColorStop(0.38,"rgba(205,38,0,165)"); g.addColorStop(0.58,"rgba(248,96,0,215)");
+  g.addColorStop(0.74,"rgba(255,150,20,235)"); g.addColorStop(0.88,"rgba(255,205,80,248)");
+  g.addColorStop(1,"rgba(255,249,226,255)");
+  x.fillStyle=g; x.fillRect(0,0,256,1);
+  var d=x.getImageData(0,0,256,1).data, out={r:[],g:[],b:[],a:[]};
+  for(var i=0;i<256;i++){ out.r.push(d[i*4]); out.g.push(d[i*4+1]); out.b.push(d[i*4+2]); out.a.push(d[i*4+3]); }
+  return out;
+})();
+function fireResize(){
+  var gw=ghost.offsetWidth, gh=ghost.offsetHeight;
+  if(!gw||!gh) return;
+  var cw=gw*1.2, ch=gh*2.15, s=Math.min(1, 1250/cw, 680/ch);
+  FW=Math.round(cw*s); FH=Math.round(ch*s);
+  fireCan.width=FW; fireCan.height=FH;
+  SW=Math.max(120,Math.round(FW/4.5)); SH=Math.max(50,Math.round(FH/4.5));
+  heat=new Float32Array(SW*SH); heat2=new Float32Array(SW*SH);
+  simCan.width=SW; simCan.height=SH; simCtx=simCan.getContext("2d");
+  fireImg=simCtx.createImageData(SW,SH);
+  var mc=document.createElement("canvas"); mc.width=FW; mc.height=FH;
+  var mx=mc.getContext("2d");
+  var fontPx=parseFloat(window.getComputedStyle(ghost).fontSize)||300;
+  var fs=fontPx*(FH/(gh*2.15));
+  mx.font="900 "+fs+"px Archivo, sans-serif";
+  if("letterSpacing" in mx) mx.letterSpacing=(-0.02*fs)+"px";
+  mx.textAlign="center"; mx.textBaseline="alphabetic";
+  mx.fillStyle="#fff"; mx.fillText("MAKABI", FW/2, FH*0.86);
+  var small=document.createElement("canvas"); small.width=SW; small.height=SH;
+  var sx2=small.getContext("2d"); sx2.drawImage(mc,0,0,SW,SH);
+  var sd=sx2.getImageData(0,0,SW,SH).data;
+  maskArr=new Float32Array(SW*SH);
+  for(var i=0;i<SW*SH;i++){ var mv=sd[i*4+3]/255; maskArr[i]=Math.max(0,Math.min(1,(mv-0.35)/0.55)); }
+  embers=[];
+  for(var e=0;e<26;e++) embers.push({x:0,y:0,vy:0,vx:0,life:0});
+}
+function fireTick(now){
+  var t=now/1000, i, x, y;
+  if(!heat) return;
+  if(ignite<=0.003){
+    var any=false;
+    for(i=0;i<heat.length;i+=7){ if(heat[i]>0.02){ any=true; break; } }
+    if(!any){ if(fireCan._lit){ fireCtx.clearRect(0,0,FW,FH); fireCan._lit=false; } return; }
+  }
+  fireCan._lit=true;
+  for(y=0;y<SH-2;y++){
+    var wob=Math.round(Math.sin(y*0.16+t*1.7)*1.3);
+    for(x=0;x<SW;x++){
+      var xa=Math.max(0,Math.min(SW-1,x+wob)), xb=Math.max(0,Math.min(SW-1,x-wob));
+      var v=Math.max(heat[(y+1)*SW+xa]*0.93, heat[(y+2)*SW+xb]*0.885);
+      if(maskArr&&maskArr[y*SW+x]<0.05) v*=0.86; /* flames die fast once they leave the letters */
+      heat2[y*SW+x]=v;
+    }
+  }
+  for(i=0;i<SW*SH;i++) heat[i]=heat2[i];
+  if(ignite>0.003){
+    for(y=0;y<SH;y++) for(x=0;x<SW;x++){
+      var m=maskArr[y*SW+x];
+      if(m>0.03){
+        var nz=0.5+0.5*Math.sin(t*19+x*1.7+y*2.6+Math.sin(x*0.31-t*6)*2.5);
+        var tv=m*ignite*(0.34+0.66*nz), idx=y*SW+x;
+        if(tv>heat[idx]) heat[idx]=tv;
+      }
+    }
+  }
+  var dd=fireImg.data;
+  for(i=0;i<SW*SH;i++){
+    var h=heat[i]; if(h>1) h=1;
+    var li=(h*255)|0, o=i*4;
+    dd[o]=LUT.r[li]; dd[o+1]=LUT.g[li]; dd[o+2]=LUT.b[li]; dd[o+3]=LUT.a[li];
+  }
+  simCtx.putImageData(fireImg,0,0);
+  fireCtx.clearRect(0,0,FW,FH);
+  fireCtx.imageSmoothingEnabled=true;
+  fireCtx.globalCompositeOperation="source-over";
+  fireCtx.globalAlpha=0.94; fireCtx.drawImage(simCan,0,0,FW,FH);
+  fireCtx.globalCompositeOperation="lighter";
+  fireCtx.globalAlpha=0.22; fireCtx.drawImage(simCan,-FW*0.012,-FH*0.02,FW*1.024,FH*1.04);
+  fireCtx.globalAlpha=1;
+  fireCtx.fillStyle="rgba(255,170,60,1)";
+  for(var e=0;e<embers.length;e++){
+    var em=embers[e];
+    if(em.life<=0){
+      if(ignite>0.45 && Math.random()<0.30){
+        var tries=0;
+        while(tries++<8){ var rx=(Math.random()*SW)|0, ry=(Math.random()*SH)|0;
+          if(maskArr[ry*SW+rx]>0.25){ em.x=rx/SW*FW; em.y=ry/SH*FH; em.vy=-(0.5+Math.random()*0.9); em.vx=(Math.random()-0.5)*0.3; em.life=50+Math.random()*70; break; } }
+      }
+      continue;
+    }
+    em.life--; em.x+=em.vx+Math.sin(t*6+em.life*0.2)*0.3; em.y+=em.vy;
+    fireCtx.globalAlpha=Math.min(1,em.life/40)*0.85;
+    fireCtx.fillRect(em.x, em.y, 1.6, 1.6);
+  }
+  fireCtx.globalAlpha=1; fireCtx.globalCompositeOperation="source-over";
 }
 
 /* journey */
@@ -717,6 +823,19 @@ function frame(now){
   /* text pops white/red while the tracker is over it (light phase only) */
   updateHot(sm.lensX, sm.lensY, R, lensVis&&!dark);
 
+  /* ---- MAKABI fire: hovering the ghost band ignites the letters ---- */
+  var gb=ghost.getBoundingClientRect();
+  var inBand=mouse.lx>(gb.left-sr.left-16)&&mouse.lx<(gb.right-sr.left+16)
+          &&mouse.ly>(gb.top-sr.top-10)&&mouse.ly<(gb.bottom-sr.top+10);
+  var igT=(!RM&&mouse.on&&p<0.35&&inBand)?1:0;
+  ignite=lerp(ignite, igT, igT>ignite?0.07:0.05);
+  if(heat&&(ignite>0.003||fireCan._lit)) fireTick(now);
+  if(Math.abs(ignite-lastChar)>0.02){
+    lastChar=ignite;
+    ghost.style.color="rgba(24,11,5,"+(0.42*ignite).toFixed(3)+")";
+    ghost.style.webkitTextStrokeColor="rgba(20,9,4,"+(0.13+0.50*ignite).toFixed(3)+")";
+  }
+
   /* ---- journey apply ---- */
   var max=Math.max(jTrack.scrollWidth-window.innerWidth+window.innerWidth*0.05,0);
   var tx=-sm.jp*max;
@@ -747,6 +866,7 @@ function frame(now){
 window.addEventListener("resize",function(){resize();});
 resize();
 requestAnimationFrame(frame);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ fireResize(); });
 setTimeout(function(){ document.querySelectorAll(".intro").forEach(function(e){ e.classList.remove("intro"); e.style.opacity=""; }); },2050);
 })();
 </script>
