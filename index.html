@@ -815,6 +815,13 @@ function frame(now){
     for(var gx=Math.floor((lx-R)/18)*18; gx<lx+R; gx+=18){ lCtx.moveTo(gx,ly-R); lCtx.lineTo(gx,ly+R); }
     for(var gy=Math.floor((ly-R)/18)*18; gy<ly+R; gy+=18){ lCtx.moveTo(lx-R,gy); lCtx.lineTo(lx+R,gy); }
     lCtx.stroke();
+    /* the burning MAKABI letters burn BEHIND him: drawn first, so the x-ray paints over them wherever his body is */
+    if(fireCanvas&&FW>0&&fcW>0){
+      lCtx.save(); lCtx.beginPath(); lCtx.arc(lx,ly,R,0,Math.PI*2); lCtx.clip();
+      var kf=FW/fcW;
+      lCtx.drawImage(fireCanvas,(lx-R-fcL)*kf,(ly-R-fcT)*kf,2*R*kf,2*R*kf,lx-R,ly-R,2*R,2*R);
+      lCtx.restore();
+    }
     /* x-ray: the Terminator layer registered to the portrait, plus the dot field.
        Only the lens window of the source is drawn — scaling the full portrait
        every frame was the main lens cost. */
@@ -826,13 +833,6 @@ function frame(now){
                      rect.x+sx0*rect.w, rect.y+sy0*rect.h, (sx1-sx0)*rect.w, (sy1-sy0)*rect.h);
       if(dotSprite) lCtx.drawImage(dotSprite, sx0*iw, sy0*ih, (sx1-sx0)*iw, (sy1-sy0)*ih,
                      rect.x+sx0*rect.w, rect.y+sy0*rect.h, (sx1-sx0)*rect.w, (sy1-sy0)*rect.h);
-    }
-    /* the burning MAKABI letter, revealed inside the tracker too */
-    if(fireCanvas&&FW>0&&fcW>0){
-      lCtx.save(); lCtx.beginPath(); lCtx.arc(lx,ly,R,0,Math.PI*2); lCtx.clip();
-      var kf=FW/fcW;
-      lCtx.drawImage(fireCanvas,(lx-R-fcL)*kf,(ly-R-fcT)*kf,2*R*kf,2*R*kf,lx-R,ly-R,2*R,2*R);
-      lCtx.restore();
     }
     /* wireframe — a faint tracker lattice now: the half-cyborg / half-anatomy face must read through it */
     lCtx.strokeStyle="rgba(238,244,255,0.34)"; lCtx.lineWidth=0.7; lCtx.beginPath();
