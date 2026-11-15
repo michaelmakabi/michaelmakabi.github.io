@@ -140,6 +140,12 @@ h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
 .row .rmeta{flex:0 0 31%;font-size:16px;font-weight:500;line-height:1.55;color:var(--grey)}
 .dark .row .rmeta{color:#c9c5ba}
 .row .rmeta .handle{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:var(--grey-l)}
+#ecosystem .rlogo{flex:0 0 auto;width:176px;height:90px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#ecosystem .rlogo img{width:100%;height:100%;object-fit:contain;padding:10px 14px;box-sizing:border-box}
+#ecosystem .rlogo.lt{background:#f4f1ea}
+#ecosystem .rlogo.dk{background:#0b0e15;border:1px solid rgba(255,255,255,.16)}
+#ecosystem .rlogo.bleed img{padding:20px 32px}
+@media (max-width:860px){#ecosystem .row{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-areas:"logo name" "logo meta";gap:6px 16px;align-items:center}#ecosystem .rlogo{grid-area:logo;width:104px;height:60px}#ecosystem .rname{grid-area:name;font-size:20px;min-width:0}#ecosystem .rmeta{grid-area:meta;flex:none}#ecosystem .rarrow{display:none}}
 .row .rarrow{font-size:26px;font-weight:500;opacity:0;transform:translateX(-10px) rotate(-45deg);transition:.35s}
 .row:hover .rarrow{opacity:1;transform:rotate(-45deg)}
 .row .rnum{font-family:var(--mono);font-size:13px;color:var(--red);flex:0 0 auto}
@@ -299,38 +305,51 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <h2 class="giant reveal">Where the<br>work <em>lives.</em></h2>
     <div class="rows reveal">
       <a class="row" href="https://1propertymarket.com" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
+        <div class="rlogo lt"><img src="logos/logo-1pm.png" alt="1PropertyMarket logo"></div>
         <div class="rname">1PropertyMarket</div>
         <div class="rmeta"><span class="handle">1pm.ai · Agentic AI for real estate</span>The platform your own AI connects to: off-market deal flow, reports, calls and follow-up, done by agents.</div>
         <div class="rarrow">→</div>
       </a>
+      <a class="row" href="https://1propertymarket.com/invest" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
+        <div class="rlogo dk"><img src="logos/logo-invest.png" alt="1PM Invest logo"></div>
+        <div class="rname">1PM Invest</div>
+        <div class="rmeta"><span class="handle">1propertymarket.com · Capital · Syndication</span>The capital arm of the platform: raise capital for your deal, or invest fractionally in vetted commercial real estate — syndication, structured and run inside 1PropertyMarket.</div>
+        <div class="rarrow">→</div>
+      </a>
       <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener" data-img="img/t-2024.jpg">
+        <div class="rlogo lt"><img src="logos/logo-loren.png" alt="Loren AI logo"></div>
         <div class="rname">Loren AI</div>
         <div class="rmeta"><span class="handle">ai-loren.com · AI voice agency</span>24/7 AI receptionists and automation for service businesses, co-founded with Loren. It never sleeps, and neither does your front desk.</div>
         <div class="rarrow">→</div>
       </a>
       <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener" data-img="img/t-2018.jpg">
+        <div class="rlogo dk bleed"><img src="logos/logo-mtip.png" alt="MTIP Commercial logo"></div>
         <div class="rname">MTIP Commercial</div>
         <div class="rmeta"><span class="handle">mtip-re.com · Brokerage</span>Make The Impossible Possible. Off-market acquisitions, dispositions and syndication, powered by Loren AI.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener" data-img="img/t-2026.jpg">
+      <a class="row" href="https://collective.mtip.ai" target="_blank" rel="noopener" data-img="img/t-2026.jpg">
+        <div class="rlogo lt"><img src="logos/logo-collective.png" alt="MTIP Collective logo"></div>
         <div class="rname">MTIP Collective</div>
-        <div class="rmeta"><span class="handle">North Miami Beach · Community</span>Workspace, AI technology, community and education on Biscayne Boulevard, and the JV partner network behind the deal flow.</div>
+        <div class="rmeta"><span class="handle">collective.mtip.ai · Community</span>Workspace, AI technology, community and education on Biscayne Boulevard, and the JV partner network behind the deal flow.</div>
         <div class="rarrow">→</div>
       </a>
       <a class="row" href="https://mtipu.com" target="_blank" rel="noopener" data-img="img/t-2023.jpg">
+        <div class="rlogo lt"><img src="logos/logo-mtipu.png" alt="MTIP University logo"></div>
         <div class="rname">MTIP University</div>
         <div class="rmeta"><span class="handle">mtipu.com · Education</span>40+ classes in wholesaling, underwriting and syndication. The same training MTIP reps get, open to anyone willing to work.</div>
         <div class="rarrow">→</div>
       </a>
       <a class="row" href="https://myrealestatebible.com" target="_blank" rel="noopener" data-img="img/t-2014.jpg">
+        <div class="rlogo dk"><img src="logos/logo-bible.png" alt="My Real Estate Bible logo"></div>
         <div class="rname">My Real Estate Bible</div>
         <div class="rmeta"><span class="handle">The Book · 600+ pages</span>Two decades of commercial real estate practice, written down: sourcing, underwriting, capital, debt and syndication.</div>
         <div class="rarrow">→</div>
       </a>
       <a class="row" href="https://1broadbridge.com" target="_blank" rel="noopener" data-img="img/eco-broad.jpg">
-        <div class="rname">BroadBridge / BRiX</div>
-        <div class="rmeta"><span class="handle">Capital · Syndication</span>The acquisition and syndication engine that gets first look at the strongest deals the ecosystem surfaces.</div>
+        <div class="rlogo lt"><img src="logos/logo-broadbridge.png" alt="BroadBridge logo"></div>
+        <div class="rname">BroadBridge</div>
+        <div class="rmeta"><span class="handle">1broadbridge.com · The Buying Fund</span>Michael's own acquisition fund. It buys what the ecosystem surfaces — first look, its own capital, its own deals.</div>
         <div class="rarrow">→</div>
       </a>
     </div>
@@ -354,7 +373,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
         <div class="rmeta">Loren AI answers your phones and 1PropertyMarket puts your own AI agent to work on deals. Book a call and see it run live.</div><div class="rarrow">→</div></a>
     </div>
     <div class="marquee reveal" aria-hidden="true"><div class="track" id="mqTrack">
-      <span>MTIP</span><i>·</i><span>1PropertyMarket</span><i>·</i><span>Loren AI</span><i>·</i><span>BroadBridge</span><i>·</i><span>BRiX</span><i>·</i><span>MTIP University</span><i>·</i><span>MTIP Collective</span><i>·</i><span>My Real Estate Bible</span><i>·</i>
+      <span>MTIP</span><i>·</i><span>1PropertyMarket</span><i>·</i><span>Loren AI</span><i>·</i><span>BroadBridge</span><i>·</i><span>1PM Invest</span><i>·</i><span>MTIP University</span><i>·</i><span>MTIP Collective</span><i>·</i><span>My Real Estate Bible</span><i>·</i>
     </div></div>
     <div class="principles reveal">
       <div class="principle"><div class="pn">Principle 01</div><h3>Make The Impossible Possible</h3><p>The name is the operating system. Every company in the ecosystem exists because a door that looked closed got opened.</p></div>
