@@ -143,9 +143,11 @@ h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
 #ecosystem .rlogo{flex:0 0 auto;width:176px;height:90px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #ecosystem .rlogo img{width:100%;height:100%;object-fit:contain;padding:10px 14px;box-sizing:border-box}
 #ecosystem .rlogo.lt{background:#f4f1ea}
+#ecosystem .rlogo-clean{flex:0 0 auto;width:214px;height:auto}
+#ecosystem .rlogo-mark{flex:0 0 auto;width:102px;height:auto;margin:0 56px}
 #ecosystem .rlogo.dk{background:#0b0e15;border:1px solid rgba(255,255,255,.16)}
 #ecosystem .rlogo.bleed img{padding:20px 32px}
-@media (max-width:860px){#ecosystem .row{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-areas:"logo name" "logo meta";gap:6px 16px;align-items:center}#ecosystem .rlogo{grid-area:logo;width:104px;height:60px}#ecosystem .rname{grid-area:name;font-size:20px;min-width:0}#ecosystem .rmeta{grid-area:meta;flex:none}#ecosystem .rarrow{display:none}}
+@media (max-width:860px){#ecosystem .rlogo-clean{grid-area:logo;width:104px}#ecosystem .rlogo-mark{grid-area:logo;width:54px;margin:0 25px}#ecosystem .row{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-areas:"logo name" "logo meta";gap:6px 16px;align-items:center}#ecosystem .rlogo{grid-area:logo;width:104px;height:60px}#ecosystem .rname{grid-area:name;font-size:20px;min-width:0}#ecosystem .rmeta{grid-area:meta;flex:none}#ecosystem .rarrow{display:none}}
 .row .rarrow{font-size:26px;font-weight:500;opacity:0;transform:translateX(-10px) rotate(-45deg);transition:.35s}
 .row:hover .rarrow{opacity:1;transform:rotate(-45deg)}
 .row .rnum{font-family:var(--mono);font-size:13px;color:var(--red);flex:0 0 auto}
@@ -305,13 +307,13 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <h2 class="giant reveal">Where the<br>work <em>lives.</em></h2>
     <div class="rows reveal">
       <a class="row" href="https://1propertymarket.com" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
-        <div class="rlogo lt"><img src="logos/logo-1pm.png" alt="1PropertyMarket logo"></div>
+        <img class="rlogo-clean" src="logos/logo-1pm.svg" alt="1PropertyMarket logo">
         <div class="rname">1PropertyMarket</div>
         <div class="rmeta"><span class="handle">1pm.ai · Agentic AI for real estate</span>The platform your own AI connects to: off-market deal flow, reports, calls and follow-up, done by agents.</div>
         <div class="rarrow">→</div>
       </a>
       <a class="row" href="https://1propertymarket.com/invest" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
-        <div class="rlogo dk"><img src="logos/logo-invest.png" alt="1PM Invest logo"></div>
+        <img class="rlogo-mark" src="logos/logo-1pm-mark.svg" alt="1PM Invest logo">
         <div class="rname">1PM Invest</div>
         <div class="rmeta"><span class="handle">1propertymarket.com · Capital · Syndication</span>The capital arm of the platform: raise capital for your deal, or invest fractionally in vetted commercial real estate — syndication, structured and run inside 1PropertyMarket.</div>
         <div class="rarrow">→</div>
