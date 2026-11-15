@@ -75,10 +75,10 @@ img{user-select:none;-webkit-user-drag:none}
 @media(max-width:860px){
   #heroTag{display:block;top:19.5%;left:16px;max-width:185px}
   #heroTag p{display:none}
-  #heroStats{top:auto;bottom:104px;right:18px;color:#f2efe7}
-  #heroStats .lbl{color:rgba(242,239,231,.72)}
+  #heroStats{top:auto;bottom:104px;right:18px;color:#e4022d}
+  #heroStats .lbl{color:rgba(228,2,45,.85)}
   #heroStats .stat{margin-bottom:10px}
-  #hudBL{left:16px;bottom:16px}#hudBR{display:none}
+  #hudBL{left:16px;bottom:16px;color:#e4022d}#hudBR{display:none}
   #heroName{left:16px;top:14px}#heroNav{right:16px;top:16px}
   #portraitWrap{height:80%}
   #scrollHint{display:none}
@@ -420,7 +420,7 @@ document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
 var stage=document.getElementById("heroStage"), wrap=document.getElementById("portraitWrap"), img=document.getElementById("portrait");
 var mCan=document.getElementById("machineCanvas"), mCtx=mCan.getContext("2d");
 var lCan=document.getElementById("lensCanvas"), lCtx=lCan.getContext("2d");
-var termImg=new Image(); termImg.src="terminator.png?v=6";
+var termImg=new Image(); termImg.src="terminator.png?v=7";
 var machineImg=null, dotSprite=null;
 function buildMachine(){
   /* the machine state is the pre-built Terminator split layer (chrome left, human right) */
@@ -822,14 +822,14 @@ function frame(now){
       if(dotSprite) lCtx.drawImage(dotSprite, sx0*iw, sy0*ih, (sx1-sx0)*iw, (sy1-sy0)*ih,
                      rect.x+sx0*rect.w, rect.y+sy0*rect.h, (sx1-sx0)*rect.w, (sy1-sy0)*rect.h);
     }
-    /* wireframe, bright against the charcoal */
-    lCtx.strokeStyle="rgba(238,244,255,0.95)"; lCtx.lineWidth=1.05; lCtx.beginPath();
+    /* wireframe — a faint tracker lattice now: the half-cyborg / half-anatomy face must read through it */
+    lCtx.strokeStyle="rgba(238,244,255,0.34)"; lCtx.lineWidth=0.7; lCtx.beginPath();
     for(var c2=0;c2<meshConns.length;c2++){
       var a2=proj[meshConns[c2][0]], b2=proj[meshConns[c2][1]];
       if(a2&&b2&&((a2.x-lx)*(a2.x-lx)+(a2.y-ly)*(a2.y-ly)<R*R)&&((b2.x-lx)*(b2.x-lx)+(b2.y-ly)*(b2.y-ly)<R*R)){ lCtx.moveTo(a2.x,a2.y); lCtx.lineTo(b2.x,b2.y); }
     }
-    lCtx.stroke(); lCtx.fillStyle="#ffffff";
-    for(var q2=0;q2<proj.length;q2++){ var pp=proj[q2]; if(pp&&(pp.x-lx)*(pp.x-lx)+(pp.y-ly)*(pp.y-ly)<R*R) lCtx.fillRect(pp.x-1.2,pp.y-1.2,2.4,2.4); }
+    lCtx.stroke(); lCtx.fillStyle="rgba(255,255,255,0.5)";
+    for(var q2=0;q2<proj.length;q2++){ var pp=proj[q2]; if(pp&&(pp.x-lx)*(pp.x-lx)+(pp.y-ly)*(pp.y-ly)<R*R) lCtx.fillRect(pp.x-0.8,pp.y-0.8,1.6,1.6); }
     /* the heart, revealed when the tracker crosses the chest */
     var hx=rect.x+ANCH.heart[0]*rect.w, hy=rect.y+ANCH.heart[1]*rect.h, hr=ANCH.heart[2]*rect.w;
     if((hx-lx)*(hx-lx)+(hy-ly)*(hy-ly)<(R+hr)*(R+hr)) drawHeart(lCtx,hx,hy,hr,t,1);
