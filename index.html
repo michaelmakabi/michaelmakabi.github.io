@@ -71,6 +71,8 @@ img{user-select:none;-webkit-user-drag:none}
 #scrollHint .wire{width:1px;height:44px;background:var(--ink);margin:8px auto 0;transform-origin:top;animation:wire 2.2s ease-in-out infinite}
 @keyframes wire{0%,100%{transform:scaleY(.35);opacity:.4}50%{transform:scaleY(1);opacity:1}}
 .intro{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.19,1,.22,1) forwards}
+@keyframes riseC{from{opacity:0;transform:translateX(-50%) translateY(26px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#portraitWrap{animation-name:riseC}
 @keyframes rise{to{opacity:1;transform:none}}
 @media(max-width:860px){
   #heroTag{display:block;top:19.5%;left:16px;max-width:185px}
@@ -187,6 +189,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
 #hudBL.hot #heroState{color:#ff405c}
 @media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#scrollHint .wire{animation:none}html{scroll-behavior:auto}.intro{animation:none;opacity:1;transform:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<link rel="preload" as="image" href="michael-cutout-v3.png">
 </head>
 <body>
 
@@ -201,7 +204,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <div id="bigGhost" aria-hidden="true">Makabi<canvas id="fireCanvas"></canvas></div>
     <div id="gridShade"></div>
     <div class="blob" id="blob1"></div><div class="blob" id="blob2"></div><div class="blob" id="blob3"></div>
-    <div id="portraitWrap" class="intro" style="animation-delay:.15s">
+    <div id="portraitWrap" class="intro" style="animation-delay:.15s;transform:translateX(-50%)">
       <img id="portrait" src="michael-cutout-v3.png" alt="Studio portrait of Michael Makabi wearing a navy blazer and a white MTIP cap" fetchpriority="high">
     </div>
     <canvas id="machineCanvas" aria-hidden="true"></canvas>
@@ -420,7 +423,7 @@ document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
 var stage=document.getElementById("heroStage"), wrap=document.getElementById("portraitWrap"), img=document.getElementById("portrait");
 var mCan=document.getElementById("machineCanvas"), mCtx=mCan.getContext("2d");
 var lCan=document.getElementById("lensCanvas"), lCtx=lCan.getContext("2d");
-var termImg=new Image(); termImg.src="terminator.png?v=7";
+var termImg=new Image(); termImg.src="terminator.png?v=8";
 var machineImg=null, dotSprite=null;
 function buildMachine(){
   /* the machine state is the pre-built Terminator split layer (chrome left, human right) */
@@ -752,6 +755,8 @@ function frame(now){
   yawEl.textContent=sm.yaw.toFixed(1)+"°"; pitchEl.textContent=sm.pitch.toFixed(1)+"°";
 
   var rect={x:ir.left-sr.left, y:ir.top-sr.top, w:ir.width, h:ir.height};
+  var gbF=ghost.getBoundingClientRect();
+  var fcL=(gbF.left-sr.left)-0.1*gbF.width, fcT=(gbF.top-sr.top)-1.05*gbF.height, fcW=1.2*gbF.width, fcH=2.15*gbF.height;
   var t=now/1000;
 
   /* ---- machine canvas: Terminator split, revealed by scroll ---- */
@@ -821,6 +826,13 @@ function frame(now){
                      rect.x+sx0*rect.w, rect.y+sy0*rect.h, (sx1-sx0)*rect.w, (sy1-sy0)*rect.h);
       if(dotSprite) lCtx.drawImage(dotSprite, sx0*iw, sy0*ih, (sx1-sx0)*iw, (sy1-sy0)*ih,
                      rect.x+sx0*rect.w, rect.y+sy0*rect.h, (sx1-sx0)*rect.w, (sy1-sy0)*rect.h);
+    }
+    /* the burning MAKABI letter, revealed inside the tracker too */
+    if(fireCanvas&&FW>0&&fcW>0){
+      lCtx.save(); lCtx.beginPath(); lCtx.arc(lx,ly,R,0,Math.PI*2); lCtx.clip();
+      var kf=FW/fcW;
+      lCtx.drawImage(fireCanvas,(lx-R-fcL)*kf,(ly-R-fcT)*kf,2*R*kf,2*R*kf,lx-R,ly-R,2*R,2*R);
+      lCtx.restore();
     }
     /* wireframe — a faint tracker lattice now: the half-cyborg / half-anatomy face must read through it */
     lCtx.strokeStyle="rgba(238,244,255,0.34)"; lCtx.lineWidth=0.7; lCtx.beginPath();
