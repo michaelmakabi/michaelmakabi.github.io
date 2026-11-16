@@ -14,7 +14,7 @@
 :root{
   --paper:#f4f1ea; --ink:#0b0b0d; --black:#060607;
   --red:#c8102e; --navy:#16294f; --gold:#a8842c; --steel:#9fb4d8;
-  --grey:#57544d; --grey-l:#a49d8d; --line:#cfc9ba; --line-d:#2a2a2e;
+  --grey:#57544d; --grey-l:#a49d8d; --red-l:#ff405c; --paper-dim:#ddd6c6; --line:#cfc9ba; --line-d:#2a2a2e;
   --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
   --mono:'Space Mono',ui-monospace,Menlo,monospace;
 }
@@ -98,7 +98,7 @@ img{user-select:none;-webkit-user-drag:none}
 #journeyScroll{height:480vh;position:relative;background:var(--black)}
 #journeyStage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--black);color:#f2efe7}
 #journeyStage .gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(140,160,200,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,160,200,.05) 1px,transparent 1px);background-size:72px 72px}
-#journeyKicker{position:absolute;left:28px;top:30px;z-index:3;color:var(--grey-l)}
+#journeyKicker{position:absolute;left:28px;top:30px;z-index:3;color:var(--red-l)}
 #journeyTitle{position:absolute;left:28px;bottom:20vh;font-weight:900;text-transform:uppercase;font-size:clamp(54px,10.5vw,158px);line-height:.9;z-index:1;pointer-events:none}
 #journeyTitle .out{color:transparent;-webkit-text-stroke:2px #f2efe7}
 #jTrack{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:3.4vw;padding:0 7vw;z-index:2;will-change:transform}
@@ -107,17 +107,17 @@ img{user-select:none;-webkit-user-drag:none}
 .jcard .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.12);transition:transform 1.2s cubic-bezier(.19,1,.22,1)}
 .jcard.on .ph img{transform:scale(1)}
 .jcard .tx{padding:18px 20px 22px}
-.jcard .handle{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-l)}
+.jcard .handle{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
 .jcard .year{color:var(--red);font-weight:900;font-size:32px;line-height:1;margin:8px 0 3px}
-.jcard .plat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-l)}
+.jcard .plat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-l)}
 .jcard h3{font-size:24px;font-weight:900;text-transform:uppercase;line-height:1.08;margin:11px 0 9px}
 .jcard p{font-size:15px;font-weight:500;line-height:1.55;color:#c9c5ba}
 #jAxis{position:absolute;left:28px;right:28px;bottom:6vh;z-index:3}
 #jAxis .rail{border-top:2px dashed #45454c;position:relative}
 #jAxis .fill{position:absolute;left:0;top:-2px;border-top:2px solid var(--red);width:0%}
-#jAxis .nodes{display:flex;justify-content:space-between;margin-top:11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey-l)}
+#jAxis .nodes{display:flex;justify-content:space-between;margin-top:11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--paper-dim)}
 #jAxis .nodes b{color:#f2efe7}
-#jMarker{position:absolute;left:28px;bottom:12vh;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey-l);z-index:3}
+#jMarker{position:absolute;left:28px;bottom:12vh;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-dim);z-index:3}
 #jMarker b{color:var(--red)}
 @media(max-width:860px){#journeyTitle{bottom:auto;top:11vh}#jAxis .nodes span:nth-child(even){display:none}.jcard .ph{height:180px}}
 
@@ -125,7 +125,7 @@ img{user-select:none;-webkit-user-drag:none}
 section.block{padding:120px 28px 100px;position:relative}
 .wrap{max-width:1560px;margin:0 auto}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
-.dark .kicker{color:var(--grey-l)}
+.dark .kicker{color:var(--red-l)}
 h2.giant{font-weight:900;text-transform:uppercase;font-size:clamp(44px,7.4vw,112px);line-height:.94;letter-spacing:-.015em}
 h2.giant em{font-style:normal;color:var(--red)}
 h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
@@ -138,8 +138,9 @@ h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
 .row .rname{font-size:clamp(29px,3.7vw,54px);font-weight:900;text-transform:uppercase;line-height:1;flex:1 1 auto;transition:transform .45s cubic-bezier(.19,1,.22,1),color .25s}
 .row:hover .rname{color:var(--red);transform:translateX(14px)}
 .row .rmeta{flex:0 0 31%;font-size:16px;font-weight:500;line-height:1.55;color:var(--grey)}
+#ecosystem .rmeta{color:var(--paper-dim)}
 .dark .row .rmeta{color:#c9c5ba}
-.row .rmeta .handle{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:var(--grey-l)}
+.row .rmeta .handle{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:var(--red-l)}
 #ecosystem .rlogo{flex:0 0 auto;width:176px;height:90px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #ecosystem .rlogo img{width:100%;height:100%;object-fit:contain;padding:10px 14px;box-sizing:border-box}
 #ecosystem .rlogo.lt{background:#f4f1ea}
@@ -151,13 +152,22 @@ h2.giant .out{color:transparent;-webkit-text-stroke:2px currentColor}
 .row .rarrow{font-size:26px;font-weight:500;opacity:0;transform:translateX(-10px) rotate(-45deg);transition:.35s}
 .row:hover .rarrow{opacity:1;transform:rotate(-45deg)}
 .row .rnum{font-family:var(--mono);font-size:13px;color:var(--red);flex:0 0 auto}
-#rowPreview{position:fixed;width:272px;height:182px;z-index:40;pointer-events:none;overflow:hidden;opacity:0;transform:scale(.85) rotate(-3deg);transition:opacity .3s,transform .45s cubic-bezier(.19,1,.22,1)}
-#rowPreview.show{opacity:1;transform:scale(1) rotate(-3deg)}
-#rowPreview img{width:100%;height:100%;object-fit:cover}
+#rowPreview{position:fixed;width:302px;z-index:40;pointer-events:none;opacity:0;transform:scale(.88) rotate(-2deg);transition:opacity .3s,transform .45s cubic-bezier(.19,1,.22,1);background:#0b0e15;border:1px solid #2a2a2e;padding:18px 18px 15px;color:#f2efe7;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+#rowPreview.show{opacity:1;transform:scale(1) rotate(-2deg)}
+#rowPreview .pvhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#rowPreview .pvname{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-l);padding-top:5px}
+#rowPreview .pvlogo{height:27px;width:auto;max-width:118px;object-fit:contain}
+#rowPreview .pvcta{font-weight:900;font-size:19.5px;line-height:1.16;margin-top:11px}
+#rowPreview .pvfor{font-size:13.5px;font-weight:500;line-height:1.5;color:var(--paper-dim);margin-top:8px}
+#rowPreview .pvgo{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:13px;color:#f2efe7}
 @media(max-width:860px){.row{flex-wrap:wrap;gap:8px;padding:26px 2px}.row .rmeta{flex:1 1 100%}.row .rarrow{display:none}#rowPreview{display:none}}
-.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;margin-top:64px}
-.marquee .track{display:flex;gap:60px;width:max-content;animation:mq 32s linear infinite;font-weight:900;text-transform:uppercase;font-size:27px;white-space:nowrap}
-.marquee .track i{font-style:normal;color:var(--red)}
+.marquee{overflow:hidden;background:var(--black);border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);padding:24px 0;margin-top:64px}
+.marquee .track{display:flex;gap:56px;width:max-content;animation:mq 38s linear infinite;white-space:nowrap;align-items:center}
+.marquee:hover .track{animation-play-state:paused}
+.mqitem{display:flex;align-items:center;gap:14px;color:#f2efe7;text-decoration:none;font-weight:900;text-transform:uppercase;font-size:23px}
+.mqitem img{height:30px;width:auto;max-width:160px;object-fit:contain}
+.mqitem:hover{color:var(--red-l)}
+.marquee .track i{font-style:normal;color:var(--red-l);font-size:15px}
 @keyframes mq{to{transform:translateX(-50%)}}
 .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
 .principle{border:1px solid var(--line);padding:28px;background:#faf8f2;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .4s}
@@ -191,10 +201,11 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
 #fireCanvas2{position:absolute;left:50%;transform:translateX(-50%);bottom:-6%;width:116%;height:225%;pointer-events:none;z-index:2}
 #footGiant{position:relative;z-index:1;font-weight:900;text-transform:uppercase;font-size:clamp(70px,15.5vw,248px);line-height:.86;text-align:center;margin-top:56px;color:transparent;-webkit-text-stroke:2px #3d3d44;transition:color 1.2s}
 #footGiant:hover{color:#f2efe7;-webkit-text-stroke:2px #f2efe7}
-.foot .fnote{margin-top:34px;font-size:12.5px;font-weight:500;color:var(--grey-l);line-height:1.65;max-width:760px}
+.foot .fnote{margin-top:34px;font-size:12.5px;font-weight:500;color:var(--paper-dim);line-height:1.65;max-width:760px}
 /* lens-hot: hero text inverts to pop against the charcoal tracker */
 #heroName,#heroNav,#heroTag,#heroStats,#hudBL,#hudBR{transition:color .18s ease}
 .hot{color:#f7f3ea !important}
+.hot .lbl,.hot .sub,.hot .handle,.hot p{color:#f7f3ea !important}
 .hot .dot{background:#ff2040 !important}
 .hot .tagdot{background:#ff2040 !important}
 .hot a{color:#f7f3ea !important}
@@ -202,7 +213,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
 #hudBL.hot #heroState{color:#ff405c}
 @media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#scrollHint .wire{animation:none}html{scroll-behavior:auto}.intro{animation:none;opacity:1;transform:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
-<link rel="preload" as="image" href="michael-cutout-v3.png">
+<link rel="preload" as="image" href="michael-cutout-4k.webp">
 </head>
 <body>
 
@@ -218,7 +229,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <div id="gridShade"></div>
     <div class="blob" id="blob1"></div><div class="blob" id="blob2"></div><div class="blob" id="blob3"></div>
     <div id="portraitWrap" class="intro" style="animation-delay:.15s;transform:translateX(-50%)">
-      <img id="portrait" src="michael-cutout-v3.png" alt="Studio portrait of Michael Makabi wearing a navy blazer and a white MTIP cap" fetchpriority="high">
+      <img id="portrait" src="michael-cutout-4k.webp" alt="Studio portrait of Michael Makabi wearing a navy blazer and a white MTIP cap" fetchpriority="high">
     </div>
     <canvas id="machineCanvas" aria-hidden="true"></canvas>
     <canvas id="lensCanvas" role="img" aria-label="Interactive portrait of Michael Makabi. A tracking lens reveals the machine view of his face. Scrolling dissolves the portrait into a machine rendering."></canvas>
@@ -252,7 +263,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
 </div>
 
 <div id="ctaBar"><a class="primary" href="#work">Work with me</a><a class="ghost" href="#newsletter">Join the newsletter</a></div>
-<div id="rowPreview"><img src="img/eco-1pm.jpg" alt=""></div>
+<div id="rowPreview"><div class="pvhead"><div class="pvname"></div><img class="pvlogo" alt=""></div><div class="pvcta"></div><p class="pvfor"></p><div class="pvgo">Visit the site &#8594;</div></div>
 
 <!-- ================= JOURNEY ================= -->
 <div id="journeyScroll">
@@ -311,49 +322,49 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
     <div class="kicker reveal">The Ecosystem</div>
     <h2 class="giant reveal">Where the<br>work <em>lives.</em></h2>
     <div class="rows reveal">
-      <a class="row" href="https://1propertymarket.com" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
+      <a class="row" href="https://1propertymarket.com" target="_blank" rel="noopener"" data-name="1PropertyMarket" data-logo="logos/logo-1pm.svg" data-cta="Click here if you want AI doing the work on your deals." data-for="For brokers, investors and teams who want off-market deal flow, reports, calls and follow-up handled by agents inside one platform.">
         <img class="rlogo-clean" src="logos/logo-1pm.svg" alt="1PropertyMarket logo">
         <div class="rname">1PropertyMarket</div>
         <div class="rmeta"><span class="handle">1pm.ai · Agentic AI for real estate</span>The platform your own AI connects to: off-market deal flow, reports, calls and follow-up, done by agents.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://1propertymarket.com/invest" target="_blank" rel="noopener" data-img="img/eco-1pm.jpg">
+      <a class="row" href="https://1propertymarket.com/invest" target="_blank" rel="noopener"" data-name="1PM Invest" data-logo="logos/logo-1pm-mark.svg" data-cta="Click here if you want to raise capital — or put yours to work." data-for="For sponsors raising for a deal, and investors who want vetted, fractional commercial real estate without running it themselves.">
         <img class="rlogo-mark" src="logos/logo-1pm-mark.svg" alt="1PM Invest logo">
         <div class="rname">1PM Invest</div>
         <div class="rmeta"><span class="handle">1propertymarket.com · Capital · Syndication</span>The capital arm of the platform: raise capital for your deal, or invest fractionally in vetted commercial real estate — syndication, structured and run inside 1PropertyMarket.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener" data-img="img/t-2024.jpg">
+      <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener"" data-name="Loren AI" data-logo="logos/mq-loren.png" data-cta="Click here if your phones ring more than your team can answer." data-for="For service businesses losing jobs to missed calls — 24/7 AI receptionists that answer, qualify and book the work.">
         <div class="rlogo lt"><img src="logos/logo-loren.png" alt="Loren AI logo"></div>
         <div class="rname">Loren AI</div>
         <div class="rmeta"><span class="handle">ai-loren.com · AI voice agency</span>24/7 AI receptionists and automation for service businesses, co-founded with Loren. It never sleeps, and neither does your front desk.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener" data-img="img/t-2018.jpg">
+      <a class="row" href="https://mtip-re.com" target="_blank" rel="noopener"" data-name="MTIP Commercial" data-logo="logos/logo-mtip.png" data-cta="Click here if you want off-market deals, direct with the brokerage." data-for="For buyers, sellers and JV partners who want acquisitions, dispositions and syndication powered by Loren AI.">
         <div class="rlogo dk bleed"><img src="logos/logo-mtip.png" alt="MTIP Commercial logo"></div>
         <div class="rname">MTIP Commercial</div>
         <div class="rmeta"><span class="handle">mtip-re.com · Brokerage</span>Make The Impossible Possible. Off-market acquisitions, dispositions and syndication, powered by Loren AI.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://collective.mtip.ai" target="_blank" rel="noopener" data-img="img/t-2026.jpg">
+      <a class="row" href="https://collective.mtip.ai" target="_blank" rel="noopener"" data-name="MTIP Collective" data-logo="logos/mq-collective.png" data-cta="Click here if you want a desk inside the deal flow." data-for="For operators, investors and founders who want workspace, community and education on Biscayne Boulevard.">
         <div class="rlogo lt"><img src="logos/logo-collective.png" alt="MTIP Collective logo"></div>
         <div class="rname">MTIP Collective</div>
         <div class="rmeta"><span class="handle">collective.mtip.ai · Community</span>Workspace, AI technology, community and education on Biscayne Boulevard, and the JV partner network behind the deal flow.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://mtipu.com" target="_blank" rel="noopener" data-img="img/t-2023.jpg">
+      <a class="row" href="https://mtipu.com" target="_blank" rel="noopener"" data-name="MTIP University" data-logo="logos/mq-mtipu.png" data-cta="Click here if you want to learn the system that built all of this." data-for="For new and experienced investors — 40+ classes in wholesaling, underwriting and syndication, the same training MTIP reps get.">
         <div class="rlogo lt"><img src="logos/logo-mtipu.png" alt="MTIP University logo"></div>
         <div class="rname">MTIP University</div>
         <div class="rmeta"><span class="handle">mtipu.com · Education</span>40+ classes in wholesaling, underwriting and syndication. The same training MTIP reps get, open to anyone willing to work.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://myrealestatebible.com" target="_blank" rel="noopener" data-img="img/t-2014.jpg">
+      <a class="row" href="https://myrealestatebible.com" target="_blank" rel="noopener"" data-name="My Real Estate Bible" data-logo="logos/logo-bible.png" data-cta="Click here if you want the whole playbook in one book." data-for="For anyone serious about commercial real estate — 600+ pages on sourcing, underwriting, capital, debt and syndication.">
         <div class="rlogo dk"><img src="logos/logo-bible.png" alt="My Real Estate Bible logo"></div>
         <div class="rname">My Real Estate Bible</div>
         <div class="rmeta"><span class="handle">The Book · 600+ pages</span>Two decades of commercial real estate practice, written down: sourcing, underwriting, capital, debt and syndication.</div>
         <div class="rarrow">→</div>
       </a>
-      <a class="row" href="https://1broadbridge.com" target="_blank" rel="noopener" data-img="img/eco-broad.jpg">
+      <a class="row" href="https://1broadbridge.com" target="_blank" rel="noopener"" data-name="BroadBridge" data-logo="logos/mq-broadbridge.png" data-cta="Click here if you have a deal that needs a buyer." data-for="Michael’s own acquisition fund. If your deal fits the buy box, BroadBridge can be your exit — first look, its own capital.">
         <div class="rlogo lt"><img src="logos/logo-broadbridge.png" alt="BroadBridge logo"></div>
         <div class="rname">BroadBridge</div>
         <div class="rmeta"><span class="handle">1broadbridge.com · The Buying Fund</span>Michael's own acquisition fund. It buys what the ecosystem surfaces — first look, its own capital, its own deals.</div>
@@ -379,9 +390,7 @@ footer{background:var(--black);color:#f2efe7;padding:64px 28px 46px;overflow:hid
       <a class="row" href="https://ai-loren.com" target="_blank" rel="noopener"><div class="rnum">03</div><div class="rname">Put AI To Work</div>
         <div class="rmeta">Loren AI answers your phones and 1PropertyMarket puts your own AI agent to work on deals. Book a call and see it run live.</div><div class="rarrow">→</div></a>
     </div>
-    <div class="marquee reveal" aria-hidden="true"><div class="track" id="mqTrack">
-      <span>MTIP</span><i>·</i><span>1PropertyMarket</span><i>·</i><span>Loren AI</span><i>·</i><span>BroadBridge</span><i>·</i><span>1PM Invest</span><i>·</i><span>MTIP University</span><i>·</i><span>MTIP Collective</span><i>·</i><span>My Real Estate Bible</span><i>·</i>
-    </div></div>
+    <div class="marquee reveal"><div class="track" id="mqTrack"><a class="mqitem" href="https://1propertymarket.com" target="_blank" rel="noopener"><img src="logos/logo-1pm.svg" alt=""><span>1PropertyMarket</span></a><i>·</i><a class="mqitem" href="https://1propertymarket.com/invest" target="_blank" rel="noopener"><img src="logos/logo-1pm-mark.svg" alt=""><span>1PM Invest</span></a><i>·</i><a class="mqitem" href="https://ai-loren.com" target="_blank" rel="noopener"><img src="logos/mq-loren.png" alt=""><span>Loren AI</span></a><i>·</i><a class="mqitem" href="https://mtip-re.com" target="_blank" rel="noopener"><img src="logos/logo-mtip.png" alt=""><span>MTIP Commercial</span></a><i>·</i><a class="mqitem" href="https://collective.mtip.ai" target="_blank" rel="noopener"><img src="logos/mq-collective.png" alt=""><span>MTIP Collective</span></a><i>·</i><a class="mqitem" href="https://mtipu.com" target="_blank" rel="noopener"><img src="logos/mq-mtipu.png" alt=""><span>MTIP University</span></a><i>·</i><a class="mqitem" href="https://myrealestatebible.com" target="_blank" rel="noopener"><img src="logos/logo-bible.png" alt=""><span>My Real Estate Bible</span></a><i>·</i><a class="mqitem" href="https://1broadbridge.com" target="_blank" rel="noopener"><img src="logos/mq-broadbridge.png" alt=""><span>BroadBridge</span></a><i>·</i></div></div>
     <div class="principles reveal">
       <div class="principle"><div class="pn">Principle 01</div><h3>Make The Impossible Possible</h3><p>The name is the operating system. Every company in the ecosystem exists because a door that looked closed got opened.</p></div>
       <div class="principle"><div class="pn">Principle 02</div><h3>Own The Asset, Automate The Work</h3><p>Buy real assets. Then build systems and AI that do the repetitive work, so time goes to family, faith and the next deal.</p></div>
@@ -454,7 +463,7 @@ document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
 var stage=document.getElementById("heroStage"), wrap=document.getElementById("portraitWrap"), img=document.getElementById("portrait");
 var mCan=document.getElementById("machineCanvas"), mCtx=mCan.getContext("2d");
 var lCan=document.getElementById("lensCanvas"), lCtx=lCan.getContext("2d");
-var termImg=new Image(); termImg.src="terminator.png?v=9";
+var termImg=new Image(); termImg.src="terminator.webp";
 var machineImg=null, dotSprite=null;
 function buildMachine(){
   /* the machine state is the pre-built Terminator split layer (chrome left, human right) */
@@ -533,7 +542,7 @@ function drawHeart(ctx,x,y,r,t,alpha){
 /* ============ state ============ */
 var W=0,H=0;
 function resize(){
-  var DPR=Math.min(window.devicePixelRatio||1,1.5);
+  var DPR=Math.min(window.devicePixelRatio||1,2);
   var r=stage.getBoundingClientRect(); W=r.width; H=r.height;
   [mCan,lCan].forEach(function(c){c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); c.getContext("2d").setTransform(DPR,0,0,DPR,0,0);});
   cacheHotRects();
@@ -615,7 +624,7 @@ function fireResize(){
   var cw=gw*1.2, ch=gh*2.15, s=Math.min(1, 1250/cw, 680/ch);
   FW=Math.round(cw*s); FH=Math.round(ch*s);
   fireCan.width=FW; fireCan.height=FH;
-  SW=Math.max(120,Math.round(FW/4.5)); SH=Math.max(50,Math.round(FH/4.5));
+  SW=Math.max(140,Math.round(FW/3)); SH=Math.max(60,Math.round(FH/3));
   heat=new Float32Array(SW*SH); heat2=new Float32Array(SW*SH);
   simCan.width=SW; simCan.height=SH; simCtx=simCan.getContext("2d");
   fireImg=simCtx.createImageData(SW,SH);
@@ -734,9 +743,9 @@ var jScroll=document.getElementById("journeyScroll"), jTrack=document.getElement
     jCards=[].slice.call(jTrack.children);
 
 /* row preview */
-var preview=document.getElementById("rowPreview"), previewImg=preview.querySelector("img"), pv={on:false,x:0,y:0};
-document.querySelectorAll(".row[data-img]").forEach(function(row){
-  row.addEventListener("mouseenter",function(e){ previewImg.src=row.getAttribute("data-img"); pv.on=true; pv.x=e.clientX; pv.y=e.clientY; preview.classList.add("show"); });
+var preview=document.getElementById("rowPreview"), pvLogo=preview.querySelector(".pvlogo"), pvName=preview.querySelector(".pvname"), pvCta=preview.querySelector(".pvcta"), pvFor=preview.querySelector(".pvfor"), pv={on:false,x:0,y:0};
+document.querySelectorAll(".row[data-cta]").forEach(function(row){
+  row.addEventListener("mouseenter",function(e){ pvLogo.src=row.getAttribute("data-logo"); pvName.textContent=row.getAttribute("data-name"); pvCta.textContent=row.getAttribute("data-cta"); pvFor.textContent=row.getAttribute("data-for"); pv.on=true; pv.x=e.clientX; pv.y=e.clientY; preview.classList.add("show"); });
   row.addEventListener("mousemove",function(e){ pv.x=e.clientX; pv.y=e.clientY; });
   row.addEventListener("mouseleave",function(){ pv.on=false; preview.classList.remove("show"); });
 });
@@ -965,7 +974,7 @@ setTimeout(function(){ document.querySelectorAll(".intro").forEach(function(e){ 
   for(var e2=0;e2<16;e2++) emb2.push({x:0,y:0,vy:0,vx:0,life:0});
   function resize2(){
     var cw=c2.clientWidth, ch=c2.clientHeight; if(!cw||!ch) return;
-    FW2=c2.width=Math.max(80,Math.round(cw/5)); FH2=c2.height=Math.max(36,Math.round(ch/5));
+    FW2=c2.width=Math.max(80,Math.round(cw/3)); FH2=c2.height=Math.max(36,Math.round(ch/3));
     sim2.width=FW2; sim2.height=FH2; img2=simX2.createImageData(FW2,FH2);
     heat2=new Float32Array(FW2*FH2); heatB2=new Float32Array(FW2*FH2);
     var gr=g2.getBoundingClientRect();
