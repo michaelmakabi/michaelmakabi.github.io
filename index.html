@@ -803,7 +803,9 @@ document.querySelectorAll(".row[data-cta]").forEach(function(row){
 var cta=document.getElementById("ctaBar");
 var heroScrollEl=document.getElementById("heroScroll");
 
+var _lastFrameTs=0;
 function frame(now){
+  _lastFrameTs=now;
   var vh=window.innerHeight, sy=window.scrollY;
   var heroTotal=heroScrollEl.offsetHeight-vh;
   var pT=clamp(sy/Math.max(heroTotal,1),0,1);
@@ -1023,6 +1025,14 @@ function frame(now){
 window.addEventListener("resize",function(){resize();});
 resize();
 requestAnimationFrame(frame);
+/* watchdog: some browsers idle-throttle rAF on a still page — if frames stall
+   while the lens is up, drive the loop from a timer so the heart, fiber-optics
+   and eye beam keep animating. Never fires while rAF is healthy. */
+setInterval(function(){
+  if(document.hidden) return;
+  var n=performance.now();
+  if(n-_lastFrameTs>140&&sm.lensOn>0.02) frame(n);
+},120);
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ fireResize(); });
 setTimeout(function(){ document.querySelectorAll(".intro").forEach(function(e){ e.classList.remove("intro"); e.style.opacity=""; }); },2050);
 /* ================= FOOTER FIRE — the giant MAKABI at the bottom burns the same way ================= */
