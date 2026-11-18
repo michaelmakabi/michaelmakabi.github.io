@@ -466,7 +466,7 @@ var lCan=document.getElementById("lensCanvas"), lCtx=lCan.getContext("2d");
 var termImg=new Image();
 var flowImg=new Image(), flowReady=false;
 flowImg.addEventListener("load",function(){ flowReady=true; });
-function loadTerm(){ if(!termImg.src) termImg.src="terminator.webp?v=6"; if(!flowImg.src) flowImg.src="flowmask.webp?v=5"; }
+function loadTerm(){ if(!termImg.src) termImg.src="terminator.webp?v=7"; if(!flowImg.src) flowImg.src="flowmask.webp?v=6"; }
 if("requestIdleCallback" in window) requestIdleCallback(loadTerm,{timeout:1600}); else setTimeout(loadTerm,800);
 window.addEventListener("load",function(){ setTimeout(loadTerm,300); });
 document.addEventListener("pointermove",loadTerm,{once:true});
