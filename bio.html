@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Michael Makabi — Bio, Ventures &amp; Expertise | MichaelMakabi.com</title>
+<meta name="description" content="The bio of Michael Makabi: two decades at the intersection of commercial real estate, technology, and capital, with the ventures he has built and led.">
+<style>
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-900-normal.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('https://michaelmakabi.github.io/fonts/space-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('https://michaelmakabi.github.io/fonts/space-mono-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+:root{
+  --black:#060607; --ink:#0b0e15; --paper:#f4f1ea; --paper-dim:#ddd6c6;
+  --red:#e4022d; --red-l:#ff405c; --gold:#a8842c; --line-d:rgba(244,241,234,.14); --line-l:rgba(6,6,7,.14);
+  --wrap:1440px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--paper);font-family:'Archivo',sans-serif;font-weight:500;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.kicker{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--red-l)}
+.kicker.on-light{color:var(--red)}
+h1,h2,h3{font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.01em}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head h2{font-size:clamp(34px,5vw,64px)}
+.sec-head p{max-width:420px;font-size:16px}
+.num-tag{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.25em;color:var(--red-l)}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(6,6,7,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-d)}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.wordmark{font-weight:900;font-size:20px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.wordmark span{color:var(--red-l)}
+.topnav{display:flex;gap:clamp(14px,3vw,36px)}
+.topnav a{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
+.topnav a:hover,.topnav a[aria-current="page"]{color:var(--red-l)}
+@media(max-width:640px){.wordmark{font-size:16px}.topnav{gap:14px}.topnav a{font-size:10px;letter-spacing:.14em}}
+
+/* ---------- Hero ---------- */
+.hero{border-bottom:1px solid var(--line-d);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0;align-items:stretch}
+.hero-copy{padding:clamp(48px,7vw,110px) clamp(20px,4vw,56px) clamp(40px,5vw,72px) 0;display:flex;flex-direction:column;justify-content:center}
+.hero-copy h1{font-size:clamp(40px,5.6vw,84px);margin:22px 0 24px}
+.hero-copy h1 em{font-style:normal;color:var(--red-l)}
+.hero-lede{font-size:clamp(17px,1.6vw,21px);color:var(--paper);max-width:56ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid var(--paper);transition:background .25s,color .25s,border-color .25s}
+.btn:hover{background:var(--paper);color:var(--black)}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.red:hover{background:var(--red-l);border-color:var(--red-l);color:#fff}
+.hero-img{position:relative;min-height:420px}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+.hero-img::after{content:"MAKE THE IMPOSSIBLE POSSIBLE";position:absolute;left:0;right:0;bottom:0;padding:14px 20px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#fff;background:linear-gradient(transparent,rgba(6,6,7,.85))}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-copy{padding-right:0}.hero-img{min-height:52vh;order:-1}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-d)}
+.stat{padding:clamp(22px,3vw,38px) clamp(16px,2.5vw,36px);border-right:1px solid var(--line-d)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-weight:900;font-size:clamp(34px,4.4vw,62px);line-height:1;color:#fff}
+.stat b i{font-style:normal;color:var(--red-l)}
+.stat span{display:block;margin-top:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper)}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line-d)}}
+
+/* ---------- Story ---------- */
+.story{background:var(--paper);color:var(--black);padding:clamp(56px,8vw,120px) 0}
+.story-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(32px,5vw,80px);align-items:start}
+.article p{font-size:clamp(17px,1.5vw,20px);line-height:1.75;margin-bottom:1.4em;max-width:68ch}
+.article p:first-of-type::first-letter{font-weight:900;font-size:4.6em;line-height:.82;float:left;padding:6px 14px 0 0;color:var(--red)}
+.pullquote{border-left:4px solid var(--red);padding:6px 0 6px 26px;margin:36px 0;font-weight:900;text-transform:uppercase;font-size:clamp(24px,2.6vw,36px);line-height:1.15}
+.pullquote small{display:block;margin-top:12px;font-family:'Space Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.25em;color:var(--red)}
+.story-side{position:sticky;top:96px;border:1px solid var(--line-l);padding:28px}
+.story-side h3{font-size:20px;margin-bottom:16px}
+.story-side ul{list-style:none}
+.story-side li{padding:12px 0;border-top:1px solid var(--line-l);font-size:15px}
+.story-side li b{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--red);display:block;text-transform:uppercase;margin-bottom:2px}
+@media(max-width:900px){.story-grid{grid-template-columns:1fr}.story-side{position:static}}
+
+/* ---------- Disciplines ---------- */
+.disciplines{padding:clamp(56px,8vw,120px) 0;border-bottom:1px solid var(--line-d)}
+.disc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d)}
+.disc{background:var(--black);padding:clamp(22px,2.4vw,34px);min-height:250px;display:flex;flex-direction:column;transition:background .25s}
+.disc:hover{background:var(--ink)}
+.disc .no{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--red-l);letter-spacing:.2em}
+.disc h3{font-size:clamp(21px,1.9vw,27px);margin:auto 0 12px;padding-top:28px}
+.disc p{font-size:14.5px;color:var(--paper);line-height:1.6}
+@media(max-width:1100px){.disc-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.disc-grid{grid-template-columns:1fr 1fr}.disc{min-height:210px}}
+@media(max-width:460px){.disc-grid{grid-template-columns:1fr}}
+
+/* ---------- Principles ---------- */
+.principles{background:var(--ink);padding:clamp(56px,8vw,120px) 0;border-bottom:1px solid var(--line-d)}
+.prin-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-d);border:1px solid var(--line-d)}
+.prin{background:var(--ink);padding:clamp(28px,3.4vw,48px)}
+.prin .no{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--gold)}
+.prin h3{font-size:clamp(24px,2.6vw,38px);margin:14px 0 18px;text-transform:none;letter-spacing:0;line-height:1.08}
+.prin p{font-size:16.5px;line-height:1.75;color:var(--paper);max-width:62ch}
+@media(max-width:820px){.prin-grid{grid-template-columns:1fr}}
+
+/* ---------- Companies ---------- */
+.companies{padding:clamp(56px,8vw,120px) 0}
+.vrow{display:grid;grid-template-columns:64px minmax(0,1.4fr) minmax(0,2fr) auto;align-items:center;gap:clamp(14px,2.5vw,32px);padding:22px 0;border-top:1px solid var(--line-d);text-decoration:none;transition:padding-left .25s}
+.vrow:last-of-type{border-bottom:1px solid var(--line-d)}
+.vrow:hover{padding-left:10px}
+.vrow .vno{font-family:'Space Mono',monospace;font-size:12px;color:var(--red-l)}
+.vrow .vname{font-weight:900;font-size:clamp(20px,2.2vw,30px);text-transform:uppercase;line-height:1.05}
+.vrow .vdesc{font-size:15px;color:var(--paper)}
+.vrow .vvisit{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;color:#fff;border:1px solid var(--paper);padding:10px 18px;white-space:nowrap;transition:background .25s,color .25s}
+.vrow:hover .vvisit{background:var(--red);border-color:var(--red)}
+@media(max-width:820px){.vrow{grid-template-columns:40px 1fr auto}.vrow .vdesc{grid-column:2/4}}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--red);color:#fff;padding:clamp(48px,6vw,84px) 0}
+.cta-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.cta h2{font-size:clamp(34px,5vw,68px);color:#fff}
+.cta p{font-size:17px;max-width:46ch;margin-top:10px}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px}
+.btn.light{border-color:#fff;color:#fff}
+.btn.light:hover{background:#fff;color:var(--red)}
+.btn.solidw{background:#fff;border-color:#fff;color:var(--red)}
+.btn.solidw:hover{background:var(--black);border-color:var(--black);color:#fff}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--line-d);padding:clamp(40px,5vw,64px) 0 0;overflow:hidden}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;padding-bottom:36px}
+.foot-grid .fcol{min-width:220px}
+.foot-grid h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--red-l);text-transform:uppercase;margin-bottom:14px}
+.foot-grid a{display:block;text-decoration:none;font-size:15px;padding:4px 0;color:var(--paper)}
+.foot-grid a:hover{color:var(--red-l)}
+.foot-grid p{font-size:15px;color:var(--paper)}
+.foot-giant{font-weight:900;text-transform:uppercase;text-align:center;font-size:clamp(72px,15.5vw,248px);line-height:.86;color:transparent;-webkit-text-stroke:2px #3d3d44;user-select:none;transition:color .4s}
+.foot-giant:hover{color:var(--paper)}
+.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid var(--line-d);padding:18px 0 22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--paper)}
+.foot-base b{color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="wordmark" href="/">MICHAEL <span>MAKABI</span></a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="bio.html" aria-current="page">Story</a>
+      <a href="40th-birthday.html">Birthday</a>
+      <a href="turnberrydesign.html">Turnberry</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy wrap" style="margin:0">
+        <p class="kicker">Founder · Operator · Investor</p>
+        <h1>Two decades at the intersection of <em>real estate</em>, technology, and capital</h1>
+        <p class="hero-lede">Michael Makabi is a veteran real estate entrepreneur, investor, technologist, and multi-business founder with more than two decades of experience across residential, commercial, and off-market real estate.</p>
+        <div class="hero-cta">
+          <a class="btn red" href="#story">Read the story</a>
+          <a class="btn" href="#companies">Companies built &amp; led</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://michaelmakabi.github.io/michael-portrait.jpg" alt="Michael Makabi portrait wearing an MTIP cap" fetchpriority="high">
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="stats" role="list" aria-label="Career highlights">
+        <div class="stat" role="listitem"><b>20<i>+</i></b><span>Years Experience</span></div>
+        <div class="stat" role="listitem"><b>10<i>+</i></b><span>Companies Built</span></div>
+        <div class="stat" role="listitem"><b>$1B<i>+</i></b><span>Career Transactions</span></div>
+        <div class="stat" role="listitem"><b>∞</b><span>Possibilities</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker on-light">The Story</p>
+          <h2 style="margin-top:12px">About Michael</h2>
+        </div>
+        <p style="color:#060607">The five domains where Michael builds, invests, and operates — and the record behind them.</p>
+      </div>
+      <div class="story-grid">
+        <article class="article">
+          <p>Michael Makabi is a veteran real estate entrepreneur, investor, technologist, and multi-business founder with more than two decades of experience across residential, commercial, and off-market real estate.</p>
+          <p>He began his career in 2004 as a commercial realtor and quickly rose to become a licensed broker. Shortly after, Michael emerged as one of the early pioneers of commercial real estate wholesaling in the highly competitive Downtown Los Angeles (DTLA) market.</p>
+          <blockquote class="pullquote">&ldquo;One of the early pioneers of commercial real estate wholesaling in DTLA.&rdquo;<small>Downtown Los Angeles · Since 2004</small></blockquote>
+          <p>Over more than 20 years, he has evolved into a nationally recognized operator, syndicator, and investor — building, scaling, and leading companies at the intersection of real estate, technology, AI, and capital markets.</p>
+          <blockquote class="pullquote">&ldquo;Building, scaling, and leading companies at the intersection of real estate, technology, AI, and capital markets.&rdquo;<small>Operator · Syndicator · Investor</small></blockquote>
+          <p>That intersection is the through-line of everything below: five disciplines, eleven companies, and one operating principle — make the impossible possible.</p>
+        </article>
+        <aside class="story-side" aria-label="At a glance">
+          <h3>At a Glance</h3>
+          <ul>
+            <li><b>Started</b>2004 — commercial realtor, Downtown Los Angeles</li>
+            <li><b>Known for</b>Early pioneer of DTLA commercial wholesaling</li>
+            <li><b>Today</b>Nationally recognized operator, syndicator &amp; investor</li>
+            <li><b>Focus</b>Real estate · Technology · AI · Capital markets</li>
+            <li><b>Motto</b>Make The Impossible Possible</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES -->
+  <section class="disciplines" id="disciplines">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">Areas of Expertise</p>
+          <h2 style="margin-top:12px">Five Disciplines</h2>
+        </div>
+        <p>The five domains where Michael builds, invests, and operates.</p>
+      </div>
+      <div class="disc-grid">
+        <div class="disc"><span class="no">01</span><h3>Real Estate</h3><p>Two decades across residential, commercial, and off-market real estate — from DTLA wholesaling pioneer to nationally recognized operator.</p></div>
+        <div class="disc"><span class="no">02</span><h3>Technology</h3><p>Systems and platforms built to run deals, teams, and portfolios — the operating layer behind the companies he leads.</p></div>
+        <div class="disc"><span class="no">03</span><h3>AI</h3><p>Agentic AI put to work inside real estate and service businesses — answering, qualifying, and moving deals forward.</p></div>
+        <div class="disc"><span class="no">04</span><h3>Investing</h3><p>Syndication and capital markets — raising, structuring, and deploying capital across vetted commercial real estate.</p></div>
+        <div class="disc"><span class="no">05</span><h3>Leadership</h3><p>Building, scaling, and leading companies and the people inside them — operators first, across every venture in the portfolio.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="principles" id="principles">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">Inspiration</p>
+          <h2 style="margin-top:12px">Principles</h2>
+        </div>
+        <p>Reflections and principles from Michael — the mindset behind two decades of building.</p>
+      </div>
+      <div class="prin-grid">
+        <article class="prin">
+          <span class="no">PRINCIPLE 01</span>
+          <h3>Be the Warrior of Your Life</h3>
+          <p>I am the warrior of my life. My intuition and foresight surmount all. It is in my nature to be kind, strong, loving, &amp; loyal. But know this; when it comes to matters of protecting my family, my business, and my trusted inner circle, do not trifle with me; Don&rsquo;t ever mistake my silence for ignorance, my calmness for acceptance or my kindness for weakness. For I am the most powerful and relentless creature you&rsquo;ll ever come to know.</p>
+        </article>
+        <article class="prin">
+          <span class="no">PRINCIPLE 02</span>
+          <h3>What is Happiness to You?</h3>
+          <p>I&rsquo;ve come to a simple revelation. Happiness is owning up to who you are, facing the music, knowing your self worth, trusting your truth, surrounding yourself with people of genuine substance and added value, sharing a masterful vision, having the guts to charter a course to set off through this amazing adventure called life to triumph all of the puzzling obstacles it throws your way and to know you have what it takes to surmount it all&hellip; no matter how challenging the odds are. Always remember that your happiness and reality is what you choose to make it. The rest is just white noise.</p>
+        </article>
+        <article class="prin">
+          <span class="no">PRINCIPLE 03</span>
+          <h3>The Hell with Circumstances — I Make My Own Luck (מַזָל)</h3>
+          <p>Luck in Hebrew translates to the word MAZAL (מַ-זָ-ל). The very definition means to be at the right place (מקום), at the right time (זְמַן) and to seize the opportunity that is presented to you (ללכת על זה). The universe doesn&rsquo;t send you into a circumstance unless it knows you&rsquo;re ready to accept the challenge of that opportunity. The success that will come from your decisive initiative and action is waiting for you to take control and become a Creator. To become the Cause not just the mere Effect of your life. Are you strong enough to stare your opponents in the eyes and win your victory?</p>
+        </article>
+        <article class="prin">
+          <span class="no">PRINCIPLE 04</span>
+          <h3>Change the World with Your Vision</h3>
+          <p>Don&rsquo;t underestimate the power of your vision to change the world. Whether that world is your office, your community, an industry or a global movement, you need to have a core belief that what you contribute can fundamentally change the paradigm or way of thinking about problems.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANIES -->
+  <section class="companies" id="companies">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">The Portfolio</p>
+          <h2 style="margin-top:12px">Companies Built &amp; Led</h2>
+        </div>
+        <p>A portfolio spanning education, technology, real estate, and capital.</p>
+      </div>
+      <div>
+        <a class="vrow" href="https://1pm.ai" target="_blank" rel="noopener"><span class="vno">01</span><span class="vname">1PM AI</span><span class="vdesc">The AI layer of the platform — agents working inside 1PropertyMarket.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://1propertymarket.com" target="_blank" rel="noopener"><span class="vno">02</span><span class="vname">1PropertyMarket</span><span class="vdesc">Agentic AI for real estate — deal flow, reports, calls and follow-up in one platform.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://www.1res.group" target="_blank" rel="noopener"><span class="vno">03</span><span class="vname">1RES Group</span><span class="vdesc">The group behind the portfolio of companies Michael has built and led.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://1broadbridge.com" target="_blank" rel="noopener"><span class="vno">04</span><span class="vname">BroadBridge Fund</span><span class="vdesc">Michael&rsquo;s own acquisition fund — first look, its own capital, its own deals.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://ai-loren.com" target="_blank" rel="noopener"><span class="vno">05</span><span class="vname">LOREN AI</span><span class="vdesc">24/7 AI receptionists that answer, qualify and book the work for service businesses.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://collective.mtip.ai" target="_blank" rel="noopener"><span class="vno">06</span><span class="vname">MTIP Collective</span><span class="vdesc">Workspace, community and education on Biscayne Boulevard, North Miami Beach.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://mtip-re.com" target="_blank" rel="noopener"><span class="vno">07</span><span class="vname">MTIP Commercial</span><span class="vdesc">MTIP CRE — off-market acquisitions, dispositions and syndication, direct with the brokerage.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://pods.mtip.ai" target="_blank" rel="noopener"><span class="vno">08</span><span class="vname">MTIP PODS</span><span class="vdesc">The MTIP pod network — operators plugged into the deal flow.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://mtipsystems.com" target="_blank" rel="noopener"><span class="vno">09</span><span class="vname">MTIP Systems</span><span class="vdesc">The systems and technology arm behind the MTIP operating model.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://mtipu.com" target="_blank" rel="noopener"><span class="vno">10</span><span class="vname">MTIP University</span><span class="vdesc">40+ classes in wholesaling, underwriting and syndication — learn the system.</span><span class="vvisit">Visit →</span></a>
+        <a class="vrow" href="https://myrealestatebible.com" target="_blank" rel="noopener"><span class="vno">11</span><span class="vname">My Real Estate Bible</span><span class="vdesc">The whole playbook in one book — 600+ pages on sourcing, underwriting, capital and syndication.</span><span class="vvisit">Visit →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap cta-in">
+      <div>
+        <h2>Work With Me</h2>
+        <p>Partner on deals, learn the system, or put AI to work in your business. Start with a conversation.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn solidw" href="mailto:mtip@hey.com">Email — mtip@hey.com</a>
+        <a class="btn light" href="tel:+12133220386">Call — (213) 322-0386</a>
+        <a class="btn light" href="https://michaelmakabi.github.io/michael-makabi.vcf" download>Save my vCard</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="fcol">
+        <h4>Contact</h4>
+        <a href="mailto:mtip@hey.com">mtip@hey.com</a>
+        <a href="tel:+12133220386">(213) 322-0386</a>
+        <p style="margin-top:10px">Miami, Florida, USA</p>
+      </div>
+      <div class="fcol">
+        <h4>Pages</h4>
+        <a href="/">Home</a>
+        <a href="bio.html">Story</a>
+        <a href="40th-birthday.html">Birthday</a>
+        <a href="turnberrydesign.html">Turnberry</a>
+      </div>
+      <div class="fcol">
+        <h4>Social</h4>
+        <a href="https://www.instagram.com/michaelmakabi/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCE-kpMEXTGewIoTfKPnw5BA" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/in/michaelmakabi/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/michaelmakabi" target="_blank" rel="noopener">X</a>
+      </div>
+      <div class="fcol">
+        <h4>The Motto</h4>
+        <p>Make The Impossible Possible.</p>
+      </div>
+    </div>
+    <div class="foot-giant" aria-hidden="true">Makabi</div>
+    <div class="foot-base">
+      <span>© 2026 Michael Makabi · All rights reserved</span>
+      <span>Powered by <b>LOREN AI</b></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Subtle reveal on scroll — respects reduced motion.
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.disc,.prin,.vrow,.stat,.story-side');
+  els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(14px)'; el.style.transition='opacity .6s ease, transform .6s ease'; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='none'; io.unobserve(e.target); } });
+  },{threshold:.12});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
