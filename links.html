@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Makabi — Private Links</title>
+<meta name="description" content="Michael Makabi's private link hub: unlisted pages and quick access.">
+<style>
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-900-normal.woff2') format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Archivo';src:url('https://michaelmakabi.github.io/fonts/archivo-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('https://michaelmakabi.github.io/fonts/space-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Space Mono';src:url('https://michaelmakabi.github.io/fonts/space-mono-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+  --black:#060607; --ink:#0b0e15; --paper:#f4f1ea; --paper-dim:#ddd6c6;
+  --red:#e4022d; --red-l:#ff405c; --line-d:rgba(244,241,234,.14);
+  --wrap:1440px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--paper);font-family:'Archivo',sans-serif;font-weight:500;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,56px);width:100%}
+.kicker{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--red-l)}
+header{padding:clamp(48px,7vw,88px) 0 clamp(24px,3vw,36px)}
+header h1{font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;font-size:clamp(40px,6.5vw,84px);margin-top:14px}
+header p{color:var(--paper-dim);max-width:560px;margin-top:14px;font-size:16px}
+main{flex:1}
+.secLabel{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red-l);padding:26px 0 4px}
+.lrow{display:flex;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid var(--line-d)}
+.lrow:first-of-type{border-top:1px solid var(--line-d)}
+.lmain{flex:1;min-width:0}
+.lname{font-weight:900;text-transform:uppercase;font-size:clamp(20px,2.6vw,30px);line-height:1.1;letter-spacing:-.01em}
+.lname a:hover{color:var(--red-l)}
+.ldesc{color:var(--paper-dim);font-size:14px;margin-top:3px}
+.lurl{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--paper-dim);margin-top:5px;word-break:break-all}
+.copyBtn{flex:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--paper);border:1px solid rgba(244,241,234,.35);border-radius:999px;padding:9px 16px;cursor:pointer;transition:border-color .2s,color .2s}
+.copyBtn:hover{border-color:var(--red-l);color:var(--red-l)}
+.copyBtn.done{border-color:var(--red);color:var(--red-l)}
+.goArrow{flex:none;font-size:22px;color:var(--paper-dim)}
+.lrow:hover .goArrow{color:var(--red-l)}
+footer{padding:34px 0 44px;margin-top:20px}
+.footGiant{font-weight:900;text-transform:uppercase;font-size:clamp(56px,12vw,170px);line-height:.86;letter-spacing:-.01em;color:transparent;-webkit-text-stroke:2px #3d3d44;text-align:center;user-select:none}
+.fnote{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-dim);text-align:center;margin-top:18px}
+@media (max-width:640px){ .lurl{display:none} .goArrow{display:none} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">Private · For Michael Only</div>
+    <h1>My Links</h1>
+    <p>Every special one-off page in one place. These pages are unlisted — nothing on the public site links to them, and search engines are told to stay out. Bookmark this page; share a link only when you mean to.</p>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="secLabel">Unlisted Pages</div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="40th-birthday.html">40th Birthday</a></div>
+        <div class="ldesc">The films Liron made, Dad's message, the song, and the photo gallery.</div>
+        <div class="lurl" data-path="40th-birthday.html"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="40th-birthday.html" aria-label="Open 40th Birthday">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="turnberrydesign.html">Turnberry — Design</a></div>
+        <div class="ldesc">The before/after design board for Unit 17D, designed &amp; built by Loren Makabi.</div>
+        <div class="lurl" data-path="turnberrydesign.html"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="turnberrydesign.html" aria-label="Open Turnberry Design">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="turnberrycondorehab.html">Turnberry — Rehab</a></div>
+        <div class="ldesc">The 158-item renovation checklist for Unit 17D, with the before/after films and floor plans.</div>
+        <div class="lurl" data-path="turnberrycondorehab.html"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="turnberrycondorehab.html" aria-label="Open Turnberry Rehab">→</a>
+    </div>
+
+    <div class="secLabel">The Site</div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="index.html">Home</a></div>
+        <div class="ldesc">The public front page — the interactive portrait, the journey, the ecosystem.</div>
+        <div class="lurl" data-path="index.html"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="index.html" aria-label="Open Home">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="bio.html">Bio — The Story</a></div>
+        <div class="ldesc">The long-form story: two decades of real estate, technology and capital.</div>
+        <div class="lurl" data-path="bio.html"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="bio.html" aria-label="Open Bio">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="index.html#feed">The Feed</a></div>
+        <div class="ldesc">Every social channel in one live feed — refreshed every Monday.</div>
+        <div class="lurl" data-path="index.html#feed"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="index.html#feed" aria-label="Open The Feed">→</a>
+    </div>
+
+    <div class="secLabel">Quick Access</div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="michael-makabi.vcf" download>My vCard</a></div>
+        <div class="ldesc">Download my contact card — mtip@hey.com · (213) 322-0386.</div>
+        <div class="lurl" data-path="michael-makabi.vcf"></div>
+      </div>
+      <button class="copyBtn" type="button">Copy Link</button>
+      <a class="goArrow" href="michael-makabi.vcf" download aria-label="Download vCard">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="https://link.me/michaelmakabi" target="_blank" rel="noopener">Virtual Card</a></div>
+        <div class="ldesc">My link.me card — the one I hand out in person.</div>
+        <div class="lurl">link.me/michaelmakabi</div>
+      </div>
+      <button class="copyBtn" type="button" data-copy="https://link.me/michaelmakabi">Copy Link</button>
+      <a class="goArrow" href="https://link.me/michaelmakabi" target="_blank" rel="noopener" aria-label="Open Virtual Card">→</a>
+    </div>
+    <div class="lrow">
+      <div class="lmain">
+        <div class="lname"><a href="https://lovable.dev/projects/719e56c9-ffa5-40d1-9f06-acd710ede5b4" target="_blank" rel="noopener">Site Editor</a></div>
+        <div class="ldesc">This site's project in Lovable — where the build lives.</div>
+        <div class="lurl">lovable.dev/projects/…</div>
+      </div>
+      <button class="copyBtn" type="button" data-copy="https://lovable.dev/projects/719e56c9-ffa5-40d1-9f06-acd710ede5b4">Copy Link</button>
+      <a class="goArrow" href="https://lovable.dev/projects/719e56c9-ffa5-40d1-9f06-acd710ede5b4" target="_blank" rel="noopener" aria-label="Open Site Editor">→</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footGiant">Makabi</div>
+    <div class="fnote">Private link hub · Not linked from the public site · Noindex</div>
+  </div>
+</footer>
+<script>
+(function(){
+  function abs(path){ return location.origin + location.pathname.replace(/[^/]*$/, '') + path; }
+  document.querySelectorAll('.lurl[data-path]').forEach(function(el){ el.textContent = abs(el.getAttribute('data-path')).replace(/^https?:\/\//, ''); });
+  document.querySelectorAll('.lrow').forEach(function(row){
+    var btn = row.querySelector('.copyBtn'); if(!btn) return;
+    var url = btn.getAttribute('data-copy');
+    if(!url){ var u = row.querySelector('.lurl[data-path]'); if(u) url = abs(u.getAttribute('data-path')); }
+    if(!url) return;
+    btn.addEventListener('click', function(){
+      function done(){ btn.textContent = 'Copied ✓'; btn.classList.add('done'); setTimeout(function(){ btn.textContent = 'Copy Link'; btn.classList.remove('done'); }, 1800); }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(done, done); }
+      else { var t = document.createElement('textarea'); t.value = url; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); }catch(e){} t.remove(); done(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
